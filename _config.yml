@@ -1,0 +1,9 @@
+theme: minima
+title: "My Blog"
+description: "Markets, Legends, and the Dark Side of Finance"
+
+header_pages:
+  - markets/index.md
+  - legends/index.md
+  - darkside/index.md
+  - culture/index.md
