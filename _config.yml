@@ -1,9 +1,16 @@
-theme: minima
 title: "My Blog"
-description: "Markets, Legends, and the Dark Side of Finance"
+description: "Personal blog where I explore the legacy of great investors, the secrets behind financial scandals, and signals hidden in markets."
+theme: minima
 
+# Navegación personalizada
 header_pages:
   - markets/index.md
   - legends/index.md
   - darkside/index.md
   - culture/index.md
+
+# Opcional: configuración de idioma y formato
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
