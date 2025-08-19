@@ -1,18 +1,19 @@
 title: "My Blog"
-description: "Personal blog where I explore the legacy of great investors, financial scandals, and hidden market signals."
-theme: minima
+description: ""   # vacío para que no aparezca abajo
 
-# Navegación personalizada (arriba en el menú)
+# Tema moderno y estético
+remote_theme: pages-themes/cayman@v0.2.0
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+
+# Navegación personalizada
 header_pages:
   - markets/index.md
   - legends/index.md
   - darkside/index.md
   - culture/index.md
 
-# Configuración Markdown
 markdown: kramdown
-
-# Plugins soportados por GitHub Pages
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
