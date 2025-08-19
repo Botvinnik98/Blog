@@ -1,5 +1,3 @@
-# 🚀 Welcome to My Blog
-
 This is my personal space to share stories, insights, and reflections about financial markets.
 
 ---
@@ -7,6 +5,7 @@ This is my personal space to share stories, insights, and reflections about fina
 ## [📊 Markets & News](markets/)
 Commentary and analysis on current events in global markets.  
 From commodities and shipping to flights and unusual data signals.  
+  
 
 ---
 
