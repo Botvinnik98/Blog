@@ -1,6 +1,7 @@
-# 🏛 Legends of Investing
+---
+title: "📚 Stories & Cases"
+layout: default
+---
 
-Stories of the most famous investors, traders, and market figures.  
-From spectacular failures to legendary successes, here you will find the history behind the markets.
-
-👉 First articles will be published soon...
+# 📚 Stories & Cases
+Profiles of investors and striking investment stories.
