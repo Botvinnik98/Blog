@@ -1,37 +1,18 @@
 title: "My Blog"
-name: "My Blog"
-description: "Blog sobre mercados, inversores legendarios y señales ocultas en las finanzas."
+description: "Personal blog where I explore the legacy of great investors, financial scandals, and hidden market signals."
+theme: minima
 
-# Usa remote_theme para Minimal Mistakes
-remote_theme: "mmistakes/minimal-mistakes"
+# Navegación personalizada (arriba en el menú)
+header_pages:
+  - markets/index.md
+  - legends/index.md
+  - darkside/index.md
+  - culture/index.md
 
-# Navegación superior
-nav:
-  - title: "📊 Markets"
-    url: /markets/
-  - title: "🏛 Legends"
-    url: /legends/
-  - title: "🕵 Dark Side"
-    url: /darkside/
-  - title: "🎭 Culture"
-    url: /culture/
+# Configuración Markdown
+markdown: kramdown
 
-# Plugins soportados en GitHub Pages
+# Plugins soportados por GitHub Pages
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-paginate
-
-markdown: kramdown
-highlighter: rouge
-paginate: 5
-paginate_path: "/page:num/"
-
-# Layout por defecto
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: false
