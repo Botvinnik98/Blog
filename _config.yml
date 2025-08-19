@@ -1,10 +1,9 @@
 title: "My Blog"
 name: "My Blog"
-# Descripción (no se mostrará en cabecera, solo para SEO)
 description: "Blog sobre mercados, inversores legendarios y señales ocultas en las finanzas."
 
-# Tema
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+# Usa remote_theme para Minimal Mistakes
+remote_theme: "mmistakes/minimal-mistakes"
 
 # Navegación superior
 nav:
@@ -17,12 +16,12 @@ nav:
   - title: "🎭 Culture"
     url: /culture/
 
-# Plugins extra
+# Plugins soportados en GitHub Pages
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
 
-# Markdown y opciones
 markdown: kramdown
 highlighter: rouge
 paginate: 5
