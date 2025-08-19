@@ -4,11 +4,11 @@ title: "Welcome"
 permalink: /
 ---
 
-# 🚀 Bienvenido a My Blog
+# 🚀 Welcome to My Blog
 
-Aquí encontrarás mis reflexiones sobre mercados financieros, inversores legendarios, y señales ocultas en el trading.
+Here I share reflections on financial markets, legendary investors, and the hidden signals behind trading.
 
 ---
 
-## Últimos Posts
-(Se mostrarán automáticamente aquí en orden cronológico gracias al layout **home** de Minimal Mistakes).
+## 📰 Latest Posts
+The most recent posts will appear automatically below in chronological order.
