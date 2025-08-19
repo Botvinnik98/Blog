@@ -1,14 +1,21 @@
 ---
-layout: home
+layout: default
 title: "Welcome"
 permalink: /
 ---
 
 # 🚀 Welcome to My Blog
 
-Here I share reflections on financial markets, legendary investors, and the hidden signals behind trading.
+Here I share reflections on financial markets, legendary investors, and hidden trading signals.
 
 ---
 
 ## 📰 Latest Posts
-The most recent posts will appear automatically below in chronological order.
+<ul>
+{% for post in site.posts limit:5 %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <small> — {{ post.date | date: "%Y-%m-%d" }}</small>
+  </li>
+{% endfor %}
+</ul>
