@@ -9,8 +9,8 @@ header_pages:
   - darkside/index.md
   - culture/index.md
 
-# Opcional: configuración de idioma y formato
 markdown: kramdown
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
