@@ -1,19 +1,17 @@
 title: "My Blog"
-description: ""   # vacío para que no aparezca abajo
+description: ""   # no mostramos texto abajo
 
-# Tema moderno y estético
 remote_theme: pages-themes/cayman@v0.2.0
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-# Navegación personalizada
 header_pages:
   - markets/index.md
-  - legends/index.md
   - darkside/index.md
+  - stories/index.md
   - culture/index.md
+  - about/index.md
 
 markdown: kramdown
