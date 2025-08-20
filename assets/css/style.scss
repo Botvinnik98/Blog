@@ -1,9 +1,9 @@
 ---
 ---
 
-@import "{{ site.theme }}"; /* deja el CSS del tema y sobreescribe debajo */
+@import "{{ site.theme }}"; /* carga los estilos del tema Cayman */
 
-/* Layout base */
+/* Contenedor y layout base */
 :root { --maxw: 1100px; }
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 1rem; }
 
@@ -12,9 +12,13 @@
   position: sticky; top: 0; z-index: 100;
   background: #fff; border-bottom: 1px solid #eaeaea;
 }
-.site-topbar .container { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; }
+.site-topbar .container {
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 1rem; align-items: center;
+}
 .brand { display: inline-flex; align-items: center; text-decoration: none; color: inherit; font-weight: 700; }
 .logo { height: 32px; width: auto; margin-right: .5rem; }
+.brand-title { font-weight: 800; }
 .tagline { font-size: .92rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .nav a { margin-left: 1rem; text-decoration: none; font-weight: 600; color: #111; }
 .nav a:hover { text-decoration: underline; }
@@ -30,6 +34,8 @@
 }
 .card h3 { margin: 0 0 .35rem; line-height: 1.25; }
 .card p  { margin: 0; color: #444; }
+
+/* Lista de últimos posts */
 .latest-list { line-height: 1.8; }
 
 /* Footer discreto */
