@@ -11,12 +11,12 @@ Here I share reflections on financial markets, legendary investors, and hidden t
 ---
 
 ## ⭐ Featured (top 3)
-<div class="featured-grid">
+<div class="featured-cards">
 {% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
 {% for post in featured %}
-  <article class="featured-item">
+  <article class="card">
     <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+    <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
   </article>
 {% endfor %}
 {% if featured == empty %}
