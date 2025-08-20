@@ -1,20 +1,23 @@
 ---
 ---
 
-@import "{{ site.theme }}"; /* carga los estilos del tema Cayman */
+/* Importa el CSS del tema Cayman y luego sobreescribe */
+@import "{{ site.theme }}";
 
-/* Contenedor y layout base */
+/* ===== Layout base ===== */
 :root { --maxw: 1100px; }
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 1rem; }
 
-/* Topbar tipo revista */
+/* ===== Topbar tipo revista ===== */
 .site-topbar {
   position: sticky; top: 0; z-index: 100;
   background: #fff; border-bottom: 1px solid #eaeaea;
 }
 .site-topbar .container {
-  display: grid; grid-template-columns: auto 1fr auto;
-  gap: 1rem; align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
 }
 .brand { display: inline-flex; align-items: center; text-decoration: none; color: inherit; font-weight: 700; }
 .logo { height: 32px; width: auto; margin-right: .5rem; }
@@ -23,14 +26,17 @@
 .nav a { margin-left: 1rem; text-decoration: none; font-weight: 600; color: #111; }
 .nav a:hover { text-decoration: underline; }
 
-/* Cards de destacados */
+/* ===== Cards de destacados ===== */
 .featured-cards {
   display: grid; gap: 1rem; margin: .5rem 0 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .card {
-  border: 1px solid #e5e7eb; border-radius: 12px; background: #fff;
-  padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
 .card h3 { margin: 0 0 .35rem; line-height: 1.25; }
 .card p  { margin: 0; color: #444; }
@@ -39,4 +45,35 @@
 .latest-list { line-height: 1.8; }
 
 /* Footer discreto */
-.site-footer { color:#666; font-size:.9rem; border-top:1px solid #eee; padding:2rem 0; margin-top:2rem; }
+.site-footer {
+  color:#666; font-size:.9rem; border-top:1px solid #eee; padding:2rem 0; margin-top:2rem;
+}
+
+/* ===== Gradiente azul-verdoso estilo Cayman en el header ===== */
+:root {
+  --cayman-1: #155799; /* azul */
+  --cayman-2: #159957; /* verdoso */
+}
+.site-topbar {
+  background-image: linear-gradient(120deg, var(--cayman-1), var(--cayman-2));
+  color: #fff;
+  border: 0;
+  box-shadow: 0 1px 8px rgba(0,0,0,.08);
+}
+.site-topbar .brand-title,
+.site-topbar .tagline { color: #fff; }
+.site-topbar .nav a { color: rgba(255,255,255,.95); }
+.site-topbar .nav a:hover { color: #fff; text-decoration: underline; }
+/* Si el logo es oscuro, invértelo para que destaque en el gradiente */
+.site-topbar .logo { filter: brightness(0) invert(1); }
+
+/* Banda "hero" fina bajo el topbar */
+.hero-strip {
+  height: 8px;
+  background-image: linear-gradient(120deg, var(--cayman-1), var(--cayman-2));
+}
+
+/* Responsive: oculta el tagline si no cabe */
+@media (max-width: 900px) {
+  .tagline { display: none; }
+}
