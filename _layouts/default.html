@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
+    <!-- CSS (cache-buster con build_revision) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
+    <!-- Topbar con logo, tagline y menú -->
     <header class="site-topbar">
       <div class="container">
         <a class="brand" href="{{ '/' | relative_url }}">
@@ -16,13 +18,16 @@
         </a>
         <div class="tagline">{{ site.tagline }}</div>
         <nav class="nav">
-          <a href="{{ '/markets/'  | relative_url }}">Markets</a>
-          <a href="{{ '/stories/'  | relative_url }}">Stories & Cases</a>
-          <a href="{{ '/culture/'  | relative_url }}">Misc</a>
-          <a href="{{ '/about/'    | relative_url }}">About</a>
+          <a href="{{ '/markets/' | relative_url }}">Markets</a>
+          <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
+          <a href="{{ '/culture/' | relative_url }}">Misc</a>
+          <a href="{{ '/about/'   | relative_url }}">About</a>
         </nav>
       </div>
     </header>
+
+    <!-- Banda fina estilo "hero" con el gradiente -->
+    <div class="hero-strip"></div>
 
     <main class="container page-body">
       {{ content }}
