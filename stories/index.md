@@ -1,6 +1,7 @@
 ---
 title: "📚 Stories & Cases"
 layout: default
+permalink: /stories/
 ---
 
 # 📚 Stories & Cases
