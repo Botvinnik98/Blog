@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} · {{ site.title }}</title>
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body>
+    <!-- Topbar -->
+    <header class="site-topbar">
+      <div class="container">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
+          <span class="brand-title">{{ site.title }}</span>
+        </a>
+        <div class="tagline">{{ site.tagline }}</div>
+        <nav class="nav">
+          <a href="{{ '/markets/'  | relative_url }}">Markets</a>
+          <a href="{{ '/stories/'  | relative_url }}">Stories & Cases</a>
+          <a href="{{ '/culture/'  | relative_url }}">Misc</a>
+          <a href="{{ '/about/'    | relative_url }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page-body">
+      {{ content }}
+    </main>
+
+    <footer class="container site-footer">
+      <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
+    </footer>
+  </body>
+</html>
