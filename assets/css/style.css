@@ -1,0 +1,21 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Cabecera tipo hero alineada a la izquierda */
+.page-header { text-align: left; }
+.project-name { margin-bottom: .25rem; }
+.project-tagline { max-width: 60ch; }
+
+/* Oculta el botón "View on GitHub" de la cabecera */
+.btn { display: none; }
+
+/* Grid de 3 destacados responsive */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.featured-item h3 { margin: 0 0 .25rem; }
+.latest-list { line-height: 1.8; }
