@@ -1,21 +1,36 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+@import "{{ site.theme }}"; /* deja el CSS del tema y sobreescribe debajo */
 
-/* Cabecera tipo hero alineada a la izquierda */
-.page-header { text-align: left; }
-.project-name { margin-bottom: .25rem; }
-.project-tagline { max-width: 60ch; }
+/* Layout base */
+:root { --maxw: 1100px; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 1rem; }
 
-/* Oculta el botón "View on GitHub" de la cabecera */
-.btn { display: none; }
-
-/* Grid de 3 destacados responsive */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
+/* Topbar tipo revista */
+.site-topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid #eaeaea;
 }
-.featured-item h3 { margin: 0 0 .25rem; }
+.site-topbar .container { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; color: inherit; font-weight: 700; }
+.logo { height: 32px; width: auto; margin-right: .5rem; }
+.tagline { font-size: .92rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav a { margin-left: 1rem; text-decoration: none; font-weight: 600; color: #111; }
+.nav a:hover { text-decoration: underline; }
+
+/* Cards de destacados */
+.featured-cards {
+  display: grid; gap: 1rem; margin: .5rem 0 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.card {
+  border: 1px solid #e5e7eb; border-radius: 12px; background: #fff;
+  padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.card h3 { margin: 0 0 .35rem; line-height: 1.25; }
+.card p  { margin: 0; color: #444; }
 .latest-list { line-height: 1.8; }
+
+/* Footer discreto */
+.site-footer { color:#666; font-size:.9rem; border-top:1px solid #eee; padding:2rem 0; margin-top:2rem; }
