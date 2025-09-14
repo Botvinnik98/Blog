@@ -27,11 +27,18 @@ Here I share reflections on financial markets, legendary investors, and hidden t
 ---
 
 ## 📰 Latest Posts
-<ul class="latest-list">
+<div class="post-cards">
 {% for post in site.posts limit:10 %}
-  <li>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    <small> — {{ post.date | date: "%Y-%m-%d" }}</small>
-  </li>
+  <article class="post-card">
+    {% if post.image %}
+      <img class="post-thumb" src="{{ post.image | relative_url }}" alt="">
+    {% endif %}
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p class="meta">
+      {{ post.date | date: "%Y-%m-%d" }}{% if post.categories and post.categories.size > 0 %} · {{ post.categories | join: ', ' }}{% endif %}
+    </p>
+    <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+  </article>
 {% endfor %}
-</ul>
+</div>
+
