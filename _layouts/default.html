@@ -3,23 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} · BehindTheTape</title>
+    <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
     <!-- CSS (cache-buster con build_revision) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <!-- Topbar con logo, brand y menú -->
+    <!-- Topbar con logo, tagline y menú -->
     <header class="site-topbar">
       <div class="container">
         <a class="brand" href="{{ '/' | relative_url }}">
-          <!-- Logo opcional (si no existe, se oculta) -->
-          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="BehindTheTape" class="logo" onerror="this.style.display='none'">
-          
-          <!-- Título + tagline -->
-          <span class="brand-title">BehindTheTape</span>
-          <span class="tagline">Reflections on markets, legendary investors and financial scandalds</span>
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
+          <span class="brand-title">{{ site.title }}</span>
         </a>
+        <div class="tagline">{{ site.tagline }}</div>
         <nav class="nav">
           <a href="{{ '/markets/' | relative_url }}">Markets</a>
           <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
@@ -29,16 +26,37 @@
       </div>
     </header>
 
-    <!-- Banda fina estilo "hero" -->
-    <div class="hero-strip"></div>
+    <!-- 📈 Ticker a ancho completo -->
+    <div class="ticker-bar tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+          { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
+          { "proName": "DJI", "title": "Dow Jones" },
+          { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
+          { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
+          { "proName": "COMEX:GC1!", "title": "Gold" },
+          { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
+          { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
+          { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
+        ],
+        "showSymbolLogo": true,
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "locale": "en"
+      }
+      </script>
+    </div>
 
     <main class="container page-body">
       {{ content }}
     </main>
 
     <footer class="container site-footer">
-      <p>© BehindTheTape {{ 'now' | date: '%Y' }}</p>
+      <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
     </footer>
   </body>
 </html>
-
