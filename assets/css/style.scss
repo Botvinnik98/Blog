@@ -147,3 +147,15 @@ body {
 @media (max-width: 900px) {
   .tagline { display: none; }
 }
+
+/* ===== Full-width ticker ===== */
+.tradingview-widget-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+.tradingview-widget-container__widget {
+  width: 100% !important;
+}
