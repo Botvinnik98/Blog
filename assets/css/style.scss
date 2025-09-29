@@ -1,131 +1,42 @@
----
----
-
-/* Importa el CSS del tema Cayman y luego sobreescribe */
-@import "{{ site.theme }}";
-
-/* ===== Layout base ===== */
-:root {
-  --maxw: 90%;             /* fluido */
-  --maxw-limit: 1600px;    /* límite superior */
-  --bg: #faf7f5;           /* fondo tipo FT (salmón/beige) */
-  --fg: #222;              /* texto principal */
-  --accent: #c65d3a;       /* acento salmón */
-  --muted: #666;           /* texto secundario */
-  --card-bg: #fff;         /* fondo de tarjetas */
-  --card-border: #e5ded8;  /* borde suave */
-}
-
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: var(--maxw-limit);
-  width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 /* ===== Topbar tipo revista ===== */
 .site-topbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--accent);
+  height: 70px; /* <<--- Aumenta la altura (antes no estaba definido) */
+  background: #f4b844; /* <<--- Naranja más amarillento */
   color: #fff;
   border: 0;
   box-shadow: 0 1px 8px rgba(0,0,0,.08);
 }
 
 .site-topbar .container {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
+  display: flex;
   align-items: center;
-}
-
-.brand { 
-  display: inline-flex; 
-  align-items: center; 
-  text-decoration: none; 
-  color: #fff; 
-  font-weight: 700; 
-}
-.logo { height: 32px; width: auto; margin-right: .5rem; filter: brightness(0) invert(1); }
-.brand-title { font-weight: 800; }
-.tagline { font-size: .92rem; color: #fcece6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.nav a { margin-left: 1rem; text-decoration: none; font-weight: 600; color: #fff; }
-.nav a:hover { text-decoration: underline; }
-
-/* Banda "hero" fina bajo el topbar */
-.hero-strip {
-  height: 6px;
-  background-image: linear-gradient(90deg, #d97852, #b04121);
-}
-
-/* ===== Cards de destacados ===== */
-.featured-cards {
-  display: grid; gap: 1rem; margin: .5rem 0 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-.card {
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  background: var(--card-bg);
-  padding: 1rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04);
-}
-.card h3 { margin: 0 0 .35rem; line-height: 1.25; color: var(--accent); }
-.card p  { margin: 0; color: var(--fg); }
-
-/* Lista de últimos posts */
-.post-cards {
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 1rem;
 }
-.post-card {
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  background: var(--card-bg);
-  padding: 1rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-.post-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0,0,0,.08);
-}
-.post-card .meta {
-  color: var(--muted);
-  font-size: .9rem;
-  margin: .25rem 0 .5rem;
-}
-.post-thumb {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: .5rem;
-  display: block;
+
+/* Marca + tagline */
+.brand {
+  display: flex;
+  align-items: baseline;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
 }
 
-/* Footer discreto */
-.site-footer {
-  color: var(--muted);
-  font-size: .9rem;
-  border-top: 1px solid var(--card-border);
-  padding: 2rem 0;
-  margin-top: 2rem;
-  background: #f3ede9;
+.brand-title {
+  font-size: 1.5rem; /* más grande para destacar */
+  font-weight: 800;
+  margin-right: .75rem;
 }
 
-/* Responsive: oculta tagline si no cabe */
-@media (max-width: 900px) {
-  .tagline { display: none; }
+.tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
