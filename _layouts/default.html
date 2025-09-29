@@ -3,20 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} · {{ site.title }}</title>
+    <title>{{ page.title }} · BehindTheTape</title>
     {% seo %}
     <!-- CSS (cache-buster con build_revision) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <!-- Topbar con logo, tagline y menú -->
+    <!-- Topbar con logo, brand y menú -->
     <header class="site-topbar">
       <div class="container">
         <a class="brand" href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
-          <span class="brand-title">{{ site.title }}</span>
+          <!-- Logo opcional (si no existe, se oculta) -->
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="BehindTheTape" class="logo" onerror="this.style.display='none'">
+          
+          <!-- Título + tagline -->
+          <span class="brand-title">BehindTheTape</span>
+          <span class="tagline">Reflections on markets, legendary investors and financial scandal</span>
         </a>
-        <div class="tagline">{{ site.tagline }}</div>
         <nav class="nav">
           <a href="{{ '/markets/' | relative_url }}">Markets</a>
           <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
@@ -26,7 +29,7 @@
       </div>
     </header>
 
-    <!-- Banda fina estilo "hero" con el gradiente -->
+    <!-- Banda fina estilo "hero" -->
     <div class="hero-strip"></div>
 
     <main class="container page-body">
@@ -34,7 +37,8 @@
     </main>
 
     <footer class="container site-footer">
-      <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
+      <p>© BehindTheTape {{ 'now' | date: '%Y' }}</p>
     </footer>
   </body>
 </html>
+
