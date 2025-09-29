@@ -9,15 +9,27 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <!-- Topbar con logo, tagline y menú -->
+    <!-- Topbar con grid (izquierda - centro - derecha) -->
     <header class="site-topbar">
-      <div class="container">
-        <a class="brand" href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
-          <span class="brand-title">{{ site.title }}</span>
-        </a>
-        <div class="tagline">{{ site.tagline }}</div>
-        <nav class="nav">
+      <div class="container topbar-grid">
+        
+        <!-- Izquierda -->
+        <div class="topbar-left">
+          <a class="brand" href="{{ '/' | relative_url }}">
+            <span class="brand-title">{{ site.title }}</span>
+          </a>
+          <div class="tagline">{{ site.tagline }}</div>
+        </div>
+
+        <!-- Centro (buscador) -->
+        <div class="topbar-center">
+          <form action="{{ '/' | relative_url }}" method="get" class="search-form">
+            <input type="text" name="q" placeholder="Search articles..." class="search-input">
+          </form>
+        </div>
+
+        <!-- Derecha -->
+        <nav class="nav topbar-right">
           <a href="{{ '/markets/' | relative_url }}">Markets</a>
           <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
           <a href="{{ '/culture/' | relative_url }}">Misc</a>
