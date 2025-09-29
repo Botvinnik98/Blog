@@ -9,26 +9,25 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <!-- Topbar con grid (izquierda - centro - derecha) -->
+    <!-- Topbar con logo, tagline, buscador y menú -->
     <header class="site-topbar">
-      <div class="container topbar-grid">
+      <div class="container topbar-inner">
         
-        <!-- Izquierda -->
-        <div class="topbar-left">
+        <!-- Izquierda: Marca + tagline al estilo ZeroHedge -->
+        <div class="brand-tagline">
           <a class="brand" href="{{ '/' | relative_url }}">
             <span class="brand-title">{{ site.title }}</span>
           </a>
           <div class="tagline">{{ site.tagline }}</div>
         </div>
 
-        <!-- Centro (buscador) -->
+        <!-- Centro: Home + buscador -->
         <div class="topbar-center">
-          <form action="{{ '/' | relative_url }}" method="get" class="search-form">
-            <input type="text" name="q" placeholder="Search articles..." class="search-input">
-          </form>
+          <a class="nav-home" href="{{ '/' | relative_url }}">Home</a>
+          <input type="search" id="search-input" class="search-input" placeholder="Search articles...">
         </div>
 
-        <!-- Derecha -->
+        <!-- Derecha: menú -->
         <nav class="nav topbar-right">
           <a href="{{ '/markets/' | relative_url }}">Markets</a>
           <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
@@ -72,4 +71,3 @@
     </footer>
   </body>
 </html>
-
