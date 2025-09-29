@@ -226,3 +226,10 @@ body {
   .tagline { display: none; }
   .search-input { min-width: 140px; }
 }
+/* ===== Logo superior izquierdo ===== */
+.site-logo {
+  height: 40px;       /* ajusta el tamaño del logo */
+  width: auto;
+  margin-right: 0.75rem;
+  display: inline-block;
+}
