@@ -5,37 +5,41 @@ permalink: /
 ---
 
 <!-- 📈 Barra de cotizaciones estilo Wall Street -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
-    { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
-    { "proName": "DJI", "title": "Dow Jones" },
-    { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
-    { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
-    { "proName": "COMEX:GC1!", "title": "Gold" },
-    { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
-    { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
-    { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
-  ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "locale": "en"
-  }
-  </script>
+<div class="ticker-bar">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+        { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
+        { "proName": "DJI", "title": "Dow Jones" },
+        { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
+        { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
+        { "proName": "COMEX:GC1!", "title": "Gold" },
+        { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
+        { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
+        { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+    </script>
+  </div>
 </div>
 
-## BEHIND THE TAPE
-
-Welcome to BehindTheTape. In this blog, we share insights on the markets, explore the legacy of great investors, uncover the secrets behind major financial scandals, and connect the dots between yesterday and today to understand tomorrow.
+<!-- Hero Title -->
+<h1 class="hero-title">Behind The Tape</h1>
+<p class="hero-subtitle">
+  Reflections on markets, legendary investors and financial scandals
+</p>
 
 ---
 
-## Featured Articles
+## ⭐ Featured Articles
 <div class="featured-cards">
 {% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
 {% for post in featured %}
@@ -51,7 +55,7 @@ Welcome to BehindTheTape. In this blog, we share insights on the markets, explor
 
 ---
 
-## Latest Posts
+## 📰 Latest Posts
 <div class="post-cards">
 {% for post in site.posts limit:10 %}
   <article class="post-card">
