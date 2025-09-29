@@ -12,7 +12,7 @@
   --fg: #222;              
   --accent: #B0A08D;       
   --muted: #666;           
-  --card-bg: #fff;         
+  --card-bg: #E2DCD5;      /* 🔹 Nuevo fondo por defecto para tarjetas */
   --card-border: #e5ded8;  
 }
 
@@ -69,14 +69,14 @@ body {
 /* ===== Logo + Marca ===== */
 .brand {
   display: flex;
-  align-items: center; /* Logo y bloque de texto en fila */
+  align-items: center; 
   gap: 0.75rem;
   text-decoration: none;
   color: #fff;
 }
 
 .site-logo {
-  height: 90px;       /* 🔹 tamaño del logo (ajusta aquí) */
+  height: 90px;    
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -84,7 +84,7 @@ body {
 
 .brand-text {
   display: flex;
-  flex-direction: column; /* Título arriba, tagline debajo */
+  flex-direction: column; 
   justify-content: center;
 }
 
@@ -180,17 +180,24 @@ body {
 
 /* ===== Cards de destacados ===== */
 .featured-cards {
-  display: grid; gap: 1rem; margin: .5rem 0 1.5rem;
+  display: grid; 
+  gap: 1rem; 
+  margin: .5rem 0 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: var(--card-bg);
+  background: #E2DCD5;   /* 🔹 Fondo nuevo */
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-.card h3 { margin: 0 0 .35rem; line-height: 1.25; color: var(--accent); }
+.card h3 { 
+  margin: 0 0 .35rem; 
+  line-height: 1.25; 
+  color: #000;        /* 🔹 Título negro */
+}
+.card a { color: #000 !important; } /* 🔹 Enlaces negros */
 .card p  { margin: 0; color: var(--fg); }
 
 /* ===== Lista de últimos posts ===== */
@@ -202,7 +209,7 @@ body {
 .post-card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: var(--card-bg);
+  background: #E2DCD5;   /* 🔹 Fondo nuevo */
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
   transition: transform .12s ease, box-shadow .12s ease;
@@ -215,6 +222,10 @@ body {
   color: var(--muted);
   font-size: .9rem;
   margin: .25rem 0 .5rem;
+}
+.post-card h3,
+.post-card a { 
+  color: #000 !important; /* 🔹 Negro en títulos */
 }
 .post-thumb {
   width: 100%;
