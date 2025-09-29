@@ -3,6 +3,7 @@ layout: default
 title: "Welcome"
 permalink: /
 ---
+
 <!-- 📈 Barra de cotizaciones estilo Wall Street -->
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
@@ -28,13 +29,13 @@ permalink: /
   </script>
 </div>
 
-# 🚀 Welcome to My Blog
+## BEHIND THE TAPE
 
-Here I share reflections on financial markets, legendary investors, and hidden trading signals.
+Welcome to BehindTheTape. In this blog, we share insights on the markets, explore the legacy of great investors, uncover the secrets behind major financial scandals, and connect the dots between yesterday and today to understand tomorrow.
 
 ---
 
-## ⭐ Featured (top 3)
+## Featured Articles
 <div class="featured-cards">
 {% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
 {% for post in featured %}
@@ -50,7 +51,7 @@ Here I share reflections on financial markets, legendary investors, and hidden t
 
 ---
 
-## 📰 Latest Posts
+## Latest Posts
 <div class="post-cards">
 {% for post in site.posts limit:10 %}
   <article class="post-card">
