@@ -5,10 +5,10 @@ permalink: /
 ---
 
 <!-- Hero Title -->
-<h1 class="hero-title">Behind The Tape</h1>
+<h1 class="hero-title">Beyond The Charts</h1>
 <p class="hero-subtitle">
   Markets are not boring graphs: they are dramas with villains, heroes, and unexpected twists.  
-  At BehindTheTape, we tell you the financial saga that Wall Street would prefer to keep secret.
+  At BeyondTheCharts, we tell you the financial saga that Wall Street would prefer to keep secret.
 </p>
 
 ---
