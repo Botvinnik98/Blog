@@ -10,32 +10,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
   </head>
   <body>
-    <!-- 🔝 Topbar con logo, tagline, buscador y menú -->
+    <!-- 🔝 Topbar -->
     <header class="site-topbar">
-      <div class="container">
+      <div class="container topbar-flex">
 
-        <!-- Bloque izquierdo: Logo + marca + tagline -->
-        <div class="topbar-left">
-          <!-- Logo -->
-          <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="BTC Logo" class="site-logo">
-
-          <!-- Marca -->
-          <a class="brand" href="{{ '/' | relative_url }}">
-            <span class="brand-title">{{ site.title }}</span>
+        <!-- Izquierda: Logo + Marca + Tagline -->
+        <div class="brand-block">
+          <a href="{{ '/' | relative_url }}" class="brand">
+            <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="BTC Logo" class="site-logo">
+            <div class="brand-text">
+              <span class="brand-title">{{ site.title }}</span>
+              <div class="tagline">{{ site.tagline }}</div>
+            </div>
           </a>
-
-          <!-- Tagline -->
-          <div class="tagline">{{ site.tagline }}</div>
         </div>
 
-        <!-- Bloque derecho: buscador + navegación -->
+        <!-- Derecha: Buscador + Menú -->
         <div class="topbar-right">
+          <form action="{{ '/' | relative_url }}" method="get" class="search-form">
+            <input type="text" name="q" placeholder="Search articles..." class="search-input">
+          </form>
           <nav class="nav">
-            <!-- Buscador -->
-            <form action="{{ '/' | relative_url }}" method="get" class="search-form">
-              <input type="text" name="q" placeholder="Search articles..." class="search-input">
-            </form>
-            <!-- Menú -->
             <a href="{{ '/' | relative_url }}">Home</a>
             <a href="{{ '/markets/' | relative_url }}">Markets</a>
             <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
@@ -46,12 +41,12 @@
       </div>
     </header>
 
-    <!-- Contenedor resultados (mueve aquí, dentro del body) -->
+    <!-- 📦 Resultados buscador -->
     <div id="search-results"
-         style="display:none;background:#fff;position:absolute;top:70px;right:2rem;z-index:200;padding:1rem;border:1px solid #ddd;border-radius:6px;max-width:300px;">
+         style="display:none;background:#fff;position:absolute;top:80px;right:2rem;z-index:200;padding:1rem;border:1px solid #ddd;border-radius:6px;max-width:300px;">
     </div>
 
-    <!-- 📈 Ticker a ancho completo -->
+    <!-- 📈 Ticker -->
     <div class="ticker-bar tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -76,15 +71,17 @@
       </script>
     </div>
 
+    <!-- 📄 Contenido -->
     <main class="container page-body">
       {{ content }}
     </main>
 
+    <!-- 📑 Footer -->
     <footer class="container site-footer">
       <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
     </footer>
 
-    <!-- Script buscador -->
+    <!-- 🔍 Script buscador -->
     <script>
       let idx, store;
       fetch("{{ '/search.json' | relative_url }}")
@@ -108,12 +105,11 @@
           searchInput.addEventListener("input", function () {
             const query = this.value;
             resultsBox.innerHTML = "";
-            resultsBox.style.display = "block";
-
             if (query.length < 2) {
               resultsBox.style.display = "none";
               return;
             }
+            resultsBox.style.display = "block";
 
             const results = idx.search(query);
             if (results.length > 0) {
