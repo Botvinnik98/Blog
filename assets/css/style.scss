@@ -101,15 +101,17 @@ body {
   font-size: 1.25rem;
   font-family: "Merriweather", Georgia, serif;
   color: #444;
-  max-width: 800px;
+  max-width: 1000px; /* más ancho para que ocupe 2 líneas */
   margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
 /* ===== Ticker full-width ===== */
 .ticker-bar {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100vw;   
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: #111; /* opcional: fondo para integrarlo */
 }
 
 .tradingview-widget-container,
