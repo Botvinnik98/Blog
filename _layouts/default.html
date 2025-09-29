@@ -5,74 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
-    <!-- CSS (cache-buster con build_revision) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
   </head>
-
-  <!-- 🔎 Lunr.js para buscador -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
-  <script>
-    let idx, store;
-
-    // Cargar índice
-    fetch("{{ '/search.json' | relative_url }}")
-      .then(res => res.json())
-      .then(data => {
-        store = data;
-        idx = lunr(function () {
-          this.ref("url");
-          this.field("title");
-          this.field("excerpt");
-          this.field("categories");
-          data.forEach(doc => this.add(doc));
-        });
-      });
-
-    // Captura input
-    document.addEventListener("DOMContentLoaded", function () {
-      const searchInput = document.querySelector(".search-input");
-      const resultsBox = document.getElementById("search-results");
-
-      if (searchInput) {
-        searchInput.addEventListener("input", function () {
-          const query = this.value;
-          resultsBox.innerHTML = "";
-
-          if (query.length < 2) return;
-
-          const results = idx.search(query);
-          if (results.length > 0) {
-            results.forEach(r => {
-              const item = store.find(d => d.url === r.ref);
-              resultsBox.innerHTML += `<p><a href="${item.url}">${item.title}</a></p>`;
-            });
-          } else {
-            resultsBox.innerHTML = "<p>No results found</p>";
-          }
-        });
-      }
-    });
-  </script>
-
-  <!-- Contenedor resultados -->
-  <div id="search-results" style="background:#fff;position:absolute;top:70px;right:2rem;z-index:200;padding:1rem;border:1px solid #ddd;border-radius:6px;max-width:300px;"></div>
-
   <body>
-    <!-- 🔝 Topbar con logo, tagline, buscador y menú -->
+    <!-- Topbar con logo, tagline y menú -->
     <header class="site-topbar">
       <div class="container">
-
-        <!-- Bloque izquierdo: Logo + marca + tagline -->
+        <!-- Bloque izquierdo: Marca + tagline -->
         <div class="topbar-left">
-          <!-- Logo -->
-          <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="BTC Logo" class="site-logo">
-
-          <!-- Marca -->
           <a class="brand" href="{{ '/' | relative_url }}">
+            <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
             <span class="brand-title">{{ site.title }}</span>
           </a>
-
-          <!-- Tagline -->
           <div class="tagline">{{ site.tagline }}</div>
         </div>
 
@@ -119,12 +64,57 @@
       </script>
     </div>
 
+    <!-- Contenido principal -->
     <main class="container page-body">
       {{ content }}
     </main>
 
+    <!-- Resultados de búsqueda -->
+    <div id="search-results"></div>
+
     <footer class="container site-footer">
       <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
     </footer>
+
+    <!-- Script búsqueda -->
+    <script>
+      let idx, store;
+
+      fetch("{{ '/search.json' | relative_url }}")
+        .then(res => res.json())
+        .then(data => {
+          store = data;
+          idx = lunr(function () {
+            this.ref("url");
+            this.field("title");
+            this.field("excerpt");
+            this.field("categories");
+            data.forEach(doc => this.add(doc));
+          });
+        });
+
+      const searchInput = document.querySelector(".search-input");
+      const resultsBox = document.getElementById("search-results");
+      resultsBox.style.display = "none";
+
+      searchInput.addEventListener("input", function () {
+        const query = this.value;
+        resultsBox.innerHTML = "";
+        if (query.length < 2) {
+          resultsBox.style.display = "none";
+          return;
+        }
+        const results = idx.search(query);
+        if (results.length > 0) {
+          results.forEach(r => {
+            const item = store.find(d => d.url === r.ref);
+            resultsBox.innerHTML += `<p><a href="${item.url}">${item.title}</a></p>`;
+          });
+        } else {
+          resultsBox.innerHTML = "<p>No results found</p>";
+        }
+        resultsBox.style.display = "block";
+      });
+    </script>
   </body>
 </html>
