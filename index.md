@@ -4,35 +4,11 @@ title: "Welcome"
 permalink: /
 ---
 
-<!-- 📈 Barra de cotizaciones estilo Wall Street -->
-<div class="ticker-bar tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
-    { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
-    { "proName": "DJI", "title": "Dow Jones" },
-    { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
-    { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
-    { "proName": "COMEX:GC1!", "title": "Gold" },
-    { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
-    { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
-    { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
-  ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "locale": "en"
-  }
-  </script>
-</div>
-
 <!-- Hero Title -->
 <h1 class="hero-title">Behind The Tape</h1>
 <p class="hero-subtitle">
-  Markets are not boring graphs: they are dramas with villains, heroes, and unexpected twists. At BehindTheTape, we tell you the financial saga that Wall Street would prefer to keep secret.
+  Markets are not boring graphs: they are dramas with villains, heroes, and unexpected twists.  
+  At BehindTheTape, we tell you the financial saga that Wall Street would prefer to keep secret.
 </p>
 
 ---
@@ -68,5 +44,3 @@ permalink: /
   </article>
 {% endfor %}
 </div>
-
- 
