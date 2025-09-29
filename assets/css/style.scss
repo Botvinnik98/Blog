@@ -36,7 +36,7 @@ body {
   top: 0;
   z-index: 100;
   height: 90px;
-  width: 100%;       /* ahora ocupa todo el ancho */
+  width: 100%;
   margin: 0;
   background: var(--accent); 
   color: #fff;
@@ -44,7 +44,7 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-/* Grid a 3 columnas: izq - centro - dcha */
+/* Grid a 3 columnas: izq (logo+tagline) - centro (home+buscador) - dcha (menú) */
 .site-topbar .container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -55,24 +55,15 @@ body {
   padding: 0 1.5rem;
 }
 
+/* ===== IZQUIERDA ===== */
 .topbar-left {
   justify-self: start;
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
-.topbar-center {
-  justify-self: center;
-}
-
-.topbar-right {
-  justify-self: end;
-  display: flex;
-  gap: 1rem;
-}
-
-/* Marca */
 .brand {
   display: flex;
   align-items: baseline;
@@ -83,28 +74,34 @@ body {
 .brand-title {
   font-size: 1.8rem;
   font-weight: 900;
-  margin-right: 1rem;
+  color: #fff;
 }
 
 .tagline {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
   color: #fff;
   opacity: 0.95;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 260px; /* fuerza salto en 2 líneas como ZeroHedge */
+  line-height: 1.3;
+  white-space: normal; /* permite salto de línea */
 }
 
-/* Navegación */
-.nav a { 
-  text-decoration: none; 
-  font-weight: 600; 
-  color: #fff; 
+/* ===== CENTRO ===== */
+.topbar-center {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.nav a:hover { text-decoration: underline; }
 
-/* ===== Buscador ===== */
+.nav-home {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+.nav-home:hover { text-decoration: underline; }
+
 .search-input {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
@@ -117,6 +114,20 @@ body {
 .search-input::placeholder {
   color: #666;
 }
+
+/* ===== DERECHA ===== */
+.topbar-right {
+  justify-self: end;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a { 
+  text-decoration: none; 
+  font-weight: 600; 
+  color: #fff; 
+}
+.nav a:hover { text-decoration: underline; }
 
 /* ===== Hero Title ===== */
 .hero-title {
@@ -139,7 +150,7 @@ body {
   font-size: 1.25rem;
   font-family: "Merriweather", Georgia, serif;
   color: #444;
-  max-width: 1100px; /* un poco más ancho */
+  max-width: 1100px;
   margin: 0 auto 2rem;
   line-height: 1.6;
 }
@@ -218,7 +229,7 @@ body {
   background: #f3ede9;
 }
 
-/* Responsive: oculta tagline si no cabe */
+/* Responsive */
 @media (max-width: 900px) {
   .tagline { display: none; }
   .search-input { min-width: 160px; }
