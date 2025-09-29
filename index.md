@@ -3,6 +3,30 @@ layout: default
 title: "Welcome"
 permalink: /
 ---
+<!-- 📈 Barra de cotizaciones estilo Wall Street -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+    { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
+    { "proName": "DJI", "title": "Dow Jones" },
+    { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
+    { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
+    { "proName": "COMEX:GC1!", "title": "Gold" },
+    { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
+    { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
+    { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+  }
+  </script>
+</div>
 
 # 🚀 Welcome to My Blog
 
