@@ -70,4 +70,3 @@ permalink: /
   </article>
 {% endfor %}
 </div>
-
