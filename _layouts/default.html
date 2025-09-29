@@ -9,31 +9,31 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <!-- Topbar con logo, tagline, buscador y menú -->
+    <!-- Topbar con logo, tagline y menú -->
     <header class="site-topbar">
-      <div class="container topbar-inner">
-        
-        <!-- Izquierda: Marca + tagline al estilo ZeroHedge -->
-        <div class="brand-tagline">
+      <div class="container">
+        <!-- Bloque izquierdo: Marca + tagline -->
+        <div class="topbar-left">
           <a class="brand" href="{{ '/' | relative_url }}">
+            <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="logo" onerror="this.style.display='none'">
             <span class="brand-title">{{ site.title }}</span>
           </a>
           <div class="tagline">{{ site.tagline }}</div>
         </div>
 
-        <!-- Centro: Home + buscador -->
-        <div class="topbar-center">
-          <a class="nav-home" href="{{ '/' | relative_url }}">Home</a>
-          <input type="search" id="search-input" class="search-input" placeholder="Search articles...">
-        </div>
+        <!-- Bloque central (por ahora vacío, después irá buscador si lo deseas) -->
+        <div class="topbar-center"></div>
 
-        <!-- Derecha: menú -->
-        <nav class="nav topbar-right">
-          <a href="{{ '/markets/' | relative_url }}">Markets</a>
-          <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
-          <a href="{{ '/culture/' | relative_url }}">Misc</a>
-          <a href="{{ '/about/'   | relative_url }}">About</a>
-        </nav>
+        <!-- Bloque derecho: navegación -->
+        <div class="topbar-right">
+          <nav class="nav">
+            <a href="{{ '/' | relative_url }}">Home</a>
+            <a href="{{ '/markets/' | relative_url }}">Markets</a>
+            <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
+            <a href="{{ '/culture/' | relative_url }}">Misc</a>
+            <a href="{{ '/about/'   | relative_url }}">About</a>
+          </nav>
+        </div>
       </div>
     </header>
 
