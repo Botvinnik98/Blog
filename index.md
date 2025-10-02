@@ -15,10 +15,9 @@ permalink: /
   </div>
 </section>
 
-<!-- FEATURED full-bleed -->
+<!-- FEATURED full-bleed (sin título) -->
 <section class="full-bleed featured-band">
   <div class="inner">
-    <h2>⭐ Featured Articles</h2>
     <div class="featured-cards">
       {% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
       {% for post in featured %}
@@ -34,9 +33,8 @@ permalink: /
   </div>
 </section>
 
-<!-- 📰 Latest Posts (panel estrecho con fondo) -->
+<!-- Latest Posts (panel estrecho con fondo, sin título) -->
 <section class="narrow-panel">
-  <h2>📰 Latest Posts</h2>
   <div class="post-cards">
   {% for post in site.posts limit:10 %}
     <article class="post-card">
