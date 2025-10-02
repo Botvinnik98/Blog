@@ -27,3 +27,4 @@ permalink: /culture/
     </div>
   {% endfor %}
 </div>
+
