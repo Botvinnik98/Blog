@@ -30,7 +30,7 @@ body {
   padding: 0 2rem;
 }
 
-/* ===== Topbar ===== */
+/* ===== Topbar (full-bleed) ===== */
 .site-topbar {
   position: sticky;
   top: 0;
@@ -38,39 +38,47 @@ body {
   height: 90px;
   width: 100%;
   margin: 0;
-  background: var(--accent);
+  background: var(--accent); 
   color: #fff;
   border: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-/* contenedor interior del topbar */
-.topbar-flex {
+/* Anula el padding lateral del container SOLO en la topbar
+   para que el contenido llegue al borde de la ventana */
+.site-topbar .container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* empuja extremos */
+  justify-content: space-between;
   width: 100%;
+  max-width: 100%;
   height: 100%;
-  gap: 1rem;
-  padding: 0 1.5rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-/* izquierda */
-.brand-block {
+/* Mini-respiro (ajústalo a 0 si lo quieres totalmente pegado) */
+.brand-block { padding-left: 12px; }
+.topbar-right { margin-left: auto; padding-right: 12px; }
+
+.topbar-left {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
+/* ===== Logo + Marca ===== */
 .brand {
   display: flex;
   align-items: center; 
   gap: 0.75rem;
   text-decoration: none;
   color: #fff;
+  margin: 0;
 }
 
 .site-logo {
-  height: 60px;            /* 🔹 evita que estire la barra */
+  height: 90px;    
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -87,6 +95,7 @@ body {
   font-weight: 900;
   line-height: 1.2;
   color: #fff;
+  margin: 0;
 }
 
 .tagline {
@@ -97,20 +106,13 @@ body {
   margin-top: 0.2rem;
 }
 
-/* derecha */
-.topbar-right {
-  margin-left: auto;       /* 🔹 se pega a la derecha */
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Navegación */
+/* ===== Navegación ===== */
 .nav {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
 .nav a { 
   text-decoration: none; 
   font-weight: 600; 
@@ -118,18 +120,22 @@ body {
 }
 .nav a:hover { text-decoration: underline; }
 
-/* Buscador */
-.search-form { margin-right: 0.25rem; }
+/* ===== Buscador ===== */
+.search-form {
+  margin-right: 1rem;
+}
 .search-input {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  min-width: 220px;
-  font-size: 0.95rem;
+  min-width: 180px;
+  font-size: 0.9rem;
   color: #000;
   background: #fff;
 }
-.search-input::placeholder { color: #666; }
+.search-input::placeholder {
+  color: #666;
+}
 
 /* ===== Hero Title ===== */
 .hero-title {
@@ -242,6 +248,12 @@ body {
   background: #f3ede9;
 }
 
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .tagline { display: none; }
+  .search-input { min-width: 140px; }
+}
+
 /* ===== Estilos de página de post ===== */
 .post-page {
   background: #E2DCD5;   /* igual que featured y latest */
@@ -253,7 +265,9 @@ body {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
-.post-header { margin-bottom: 1.5rem; }
+.post-header {
+  margin-bottom: 1.5rem;
+}
 
 .post-title {
   font-family: "Playfair Display", Georgia, serif;
@@ -263,20 +277,28 @@ body {
   color: #111;
 }
 
-.post-meta { color: var(--muted); font-size: 0.9rem; }
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 
 .post-content {
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--fg);
 }
+
 .post-content h2, 
 .post-content h3 {
   color: #111;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
-.post-content p { margin-bottom: 1.2rem; }
+
+.post-content p {
+  margin-bottom: 1.2rem;
+}
+
 .post-content ul, 
 .post-content ol {
   margin-left: 1.5rem;
@@ -293,6 +315,7 @@ body {
   max-width: 900px;
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
+
 .post-title {
   font-size: 2.2rem;
   font-weight: 800;
@@ -300,19 +323,30 @@ body {
   color: #222;
   text-align: center;
 }
-.post-content { font-size: 1.05rem; line-height: 1.7; color: #333; }
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
 .post-content h2 {
   margin-top: 2rem;
   font-size: 1.4rem;
   border-bottom: 2px solid var(--accent);
   padding-bottom: .3rem;
 }
-.post-content ul, .post-content ol { margin-left: 1.5rem; }
+.post-content ul, .post-content ol {
+  margin-left: 1.5rem;
+}
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .tagline { display: none; }
-  .topbar-flex { flex-wrap: wrap; }
-  .topbar-right { width: 100%; justify-content: flex-end; }
-  .search-input { min-width: 160px; }
+/* ===== Contenedor central para posts y páginas (si lo usas en otras vistas) ===== */
+.post-card,
+.page-body {
+  max-width: 900px;   /* 🔹 ancho fijo típico de blogs */
+  margin: 0 auto;     
+  padding: 2rem;      
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
 }
