@@ -6,17 +6,14 @@
 
 /* ===== Variables base ===== */
 :root {
-  --maxw: 90%;
-  --maxw-limit: 1600px;
-  --bg: #faf7f5;
-  --fg: #222;
-  --accent: #B0A08D;
-  --muted: #666;
-  --card-bg: #E2DCD5;      /* Fondo tarjetas */
-  --card-border: #e5ded8;
-
-  /* Fondo de la banda que ocupa todo el ancho (hero + featured) */
-  --band-bg: #ece5de;      /* Ajusta el tono si quieres (#e9e3dd, #f0ebe6, ...) */
+  --maxw: 90%;             
+  --maxw-limit: 1600px;    
+  --bg: #faf7f5;           
+  --fg: #222;              
+  --accent: #B0A08D;       
+  --muted: #666;           
+  --card-bg: #E2DCD5;      /* 🔹 Nuevo fondo por defecto para tarjetas */
+  --card-border: #e5ded8;  
 }
 
 body {
@@ -41,13 +38,14 @@ body {
   height: 90px;
   width: 100%;
   margin: 0;
-  background: var(--accent);
+  background: var(--accent); 
   color: #fff;
   border: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-/* El contenido de la topbar llega hasta los bordes */
+/* Anula el padding lateral del container SOLO en la topbar
+   para que el contenido llegue al borde de la ventana */
 .site-topbar .container {
   display: flex;
   align-items: center;
@@ -59,13 +57,20 @@ body {
   padding-right: 0;
 }
 
+/* Mini-respiro (ajústalo a 0 si lo quieres totalmente pegado) */
 .brand-block { padding-left: 12px; }
 .topbar-right { margin-left: auto; padding-right: 12px; }
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
 /* ===== Logo + Marca ===== */
 .brand {
   display: flex;
-  align-items: center;
+  align-items: center; 
   gap: 0.75rem;
   text-decoration: none;
   color: #fff;
@@ -73,7 +78,7 @@ body {
 }
 
 .site-logo {
-  height: 90px;
+  height: 90px;    
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -81,7 +86,7 @@ body {
 
 .brand-text {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: center;
 }
 
@@ -108,15 +113,17 @@ body {
   gap: 1rem;
 }
 
-.nav a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #fff;
+.nav a { 
+  text-decoration: none; 
+  font-weight: 600; 
+  color: #fff; 
 }
 .nav a:hover { text-decoration: underline; }
 
 /* ===== Buscador ===== */
-.search-form { margin-right: 1rem; }
+.search-form {
+  margin-right: 1rem;
+}
 .search-input {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
@@ -126,15 +133,44 @@ body {
   color: #000;
   background: #fff;
 }
-.search-input::placeholder { color: #666; }
+.search-input::placeholder {
+  color: #666;
+}
 
-/* ===== Ticker a ancho completo ===== */
+/* ===== Hero Title ===== */
+.hero-title {
+  display: block;              
+  text-align: center;          
+  font-size: 3.2rem;
+  font-weight: 900;
+  font-family: "Playfair Display", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 2rem auto 1rem;
+  color: #2c2c2c;
+  border-bottom: 5px solid var(--accent);
+  width: 100%;
+  padding-bottom: .3rem;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: "Merriweather", Georgia, serif;
+  color: #444;
+  max-width: 1100px; 
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* ===== Ticker full-width ===== */
 .ticker-bar {
-  width: 100vw;
+  width: 100vw;   
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   background: #111;
 }
+
 .tradingview-widget-container,
 .tradingview-widget-container__widget,
 .tradingview-widget-container iframe {
@@ -145,83 +181,29 @@ body {
   display: block;
 }
 
-/* ===== Hero (título + frase) y Featured con banda full-bleed ===== */
-
-/* Utilidad robusta para sangrar a todo el ancho */
-.full-bleed {
-  position: relative;
-  display: block;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  background: var(--band-bg);
-  /* alineado con el layout central */
-  padding-left: min(2rem, 5vw);
-  padding-right: min(2rem, 5vw);
-}
-
-/* Título a ancho completo (sin borde aquí) */
-.page-body .hero-title {
-  @extend .full-bleed;
-  text-align: center;
-  font-size: 3.2rem;
-  font-weight: 900;
-  font-family: "Playfair Display", Georgia, serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #2c2c2c;
-  margin-top: 1.5rem;
-  margin-bottom: .25rem;
-  padding-top: 1.25rem;
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-/* Frase a ancho completo + línea separadora */
-.page-body .hero-subtitle {
-  @extend .full-bleed;
-  text-align: center;
-  font-size: 1.25rem;
-  font-family: "Merriweather", Georgia, serif;
-  color: #444;
-  margin: 0;
-  padding-top: .25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid #d5cfc7;
-  line-height: 1.6;
-  max-width: 1100px; /* para que la lectura sea cómoda */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Featured a ancho completo + línea separadora con Latest */
-.page-body .featured-cards {
-  @extend .full-bleed;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin: 0 0 1.25rem 0;
-  border-bottom: 1px solid #d5cfc7;
-
-  display: grid;
-  gap: 1rem;
+/* ===== Cards de destacados ===== */
+.featured-cards {
+  display: grid; 
+  gap: 1rem; 
+  margin: .5rem 0 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-
-/* ===== Tarjetas (destacados y latest) ===== */
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: var(--card-bg);
+  background: #E2DCD5;   /* 🔹 Fondo nuevo */
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-.card h3 { margin: 0 0 .35rem; line-height: 1.25; color: #000; }
-.card a  { color: #000 !important; }
+.card h3 { 
+  margin: 0 0 .35rem; 
+  line-height: 1.25; 
+  color: #000;        /* 🔹 Título negro */
+}
+.card a { color: #000 !important; } /* 🔹 Enlaces negros */
 .card p  { margin: 0; color: var(--fg); }
 
-/* Lista columnar “Latest Posts” (ancho estándar del sitio) */
+/* ===== Lista de últimos posts ===== */
 .post-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -230,7 +212,7 @@ body {
 .post-card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: var(--card-bg);
+  background: #E2DCD5;   /* 🔹 Fondo nuevo */
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
   transition: transform .12s ease, box-shadow .12s ease;
@@ -239,9 +221,15 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(0,0,0,.08);
 }
-.post-card .meta { color: var(--muted); font-size: .9rem; margin: .25rem 0 .5rem; }
+.post-card .meta {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: .25rem 0 .5rem;
+}
 .post-card h3,
-.post-card a { color: #000 !important; }
+.post-card a { 
+  color: #000 !important; /* 🔹 Negro en títulos */
+}
 .post-thumb {
   width: 100%;
   height: auto;
@@ -260,9 +248,15 @@ body {
   background: #f3ede9;
 }
 
-/* ===== Página de post ===== */
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .tagline { display: none; }
+  .search-input { min-width: 140px; }
+}
+
+/* ===== Estilos de página de post ===== */
 .post-page {
-  background: #E2DCD5;
+  background: #E2DCD5;   /* igual que featured y latest */
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 2rem;
@@ -271,7 +265,9 @@ body {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
-.post-header { margin-bottom: 1.5rem; }
+.post-header {
+  margin-bottom: 1.5rem;
+}
 
 .post-title {
   font-family: "Playfair Display", Georgia, serif;
@@ -279,19 +275,37 @@ body {
   font-weight: 900;
   margin: 0 0 0.5rem;
   color: #111;
-  text-align: center;
 }
 
-.post-meta { color: var(--muted); font-size: 0.9rem; }
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 
-.post-content { font-size: 1.05rem; line-height: 1.7; color: var(--fg); }
-.post-content h2 { margin-top: 2rem; font-size: 1.4rem; border-bottom: 2px solid var(--accent); padding-bottom: .3rem; }
-.post-content h3 { margin-top: 1.5rem; }
-.post-content p  { margin-bottom: 1.2rem; }
-.post-content ul,
-.post-content ol { margin-left: 1.5rem; margin-bottom: 1.2rem; }
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--fg);
+}
 
-/* Contenedor post “clásico” */
+.post-content h2, 
+.post-content h3 {
+  color: #111;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-content p {
+  margin-bottom: 1.2rem;
+}
+
+.post-content ul, 
+.post-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ===== Post individual ===== */
 .post-container {
   background: #E2DCD5;
   border: 1px solid var(--card-border);
@@ -302,13 +316,37 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .tagline { display: none; }
-  .search-input { min-width: 140px; }
+.post-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #222;
+  text-align: center;
+}
 
-  /* La banda sigue a ancho completo; solo damos algo menos de aire */
-  .page-body .hero-title    { padding-top: 1rem; }
-  .page-body .hero-subtitle { padding-bottom: 1rem; }
-  .page-body .featured-cards { padding-top: .75rem; padding-bottom: .75rem; }
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
+.post-content h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: .3rem;
+}
+.post-content ul, .post-content ol {
+  margin-left: 1.5rem;
+}
+
+/* ===== Contenedor central para posts y páginas (si lo usas en otras vistas) ===== */
+.post-card,
+.page-body {
+  max-width: 900px;   /* 🔹 ancho fijo típico de blogs */
+  margin: 0 auto;     
+  padding: 2rem;      
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
 }
