@@ -6,9 +6,10 @@ permalink: /stories/
 
 <h1>Stories & Cases</h1>
 
-<!-- Destacados de Stories -->
+<!-- Destacados -->
 <div class="featured-cards">
-  {% for post in site.categories.stories limit:3 %}
+  {% assign stories_posts = site.categories.stories | sort: "date" | reverse %}
+  {% for post in stories_posts limit:3 %}
     <div class="card">
       <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       <p>{{ post.description }}</p>
@@ -16,10 +17,10 @@ permalink: /stories/
   {% endfor %}
 </div>
 
-<!-- Últimos posts de Stories -->
+<!-- Últimos -->
 <h2>Latest Posts</h2>
 <div class="post-cards">
-  {% for post in site.categories.stories %}
+  {% for post in stories_posts %}
     <div class="post-card">
       <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       <p class="meta">{{ post.date | date: "%Y-%m-%d" }}</p>
@@ -27,4 +28,3 @@ permalink: /stories/
     </div>
   {% endfor %}
 </div>
-
