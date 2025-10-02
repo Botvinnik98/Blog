@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
-    <!-- CSS (cache-buster con timestamp) -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.time | relative_url }}">
+    <!-- CSS (cache-buster con build_revision) -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
   </head>
   <body>
@@ -35,7 +35,7 @@
             <a href="{{ '/markets/' | relative_url }}">Markets</a>
             <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
             <a href="{{ '/culture/' | relative_url }}">Misc</a>
-            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/about/'   | relative_url }}">About</a>
           </nav>
         </div>
       </div>
