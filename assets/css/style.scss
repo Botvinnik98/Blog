@@ -12,7 +12,7 @@
   --fg: #222;              
   --accent: #B0A08D;       
   --muted: #666;           
-  --card-bg: #E2DCD5;      /* 🔹 Nuevo fondo por defecto para tarjetas */
+  --card-bg: #fff;         
   --card-border: #e5ded8;  
 }
 
@@ -35,13 +35,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 90px;
+  height: 90px;             /* 🔹 Altura FIJA de la barra */
   width: 100%;       
   margin: 0;
   background: var(--accent); 
   color: #fff;
   border: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,.1);
+  display: flex;
+  align-items: center;      /* 🔹 centra verticalmente */
 }
 
 .site-topbar .container {
@@ -56,7 +58,7 @@ body {
 
 .topbar-left {
   display: flex;
-  align-items: center;
+  align-items: center;     /* 🔹 logo + texto alineados */
   gap: 0.5rem;
 }
 
@@ -66,44 +68,40 @@ body {
   gap: 1rem;
 }
 
-/* ===== Logo + Marca ===== */
-.brand {
-  display: flex;
-  align-items: center; 
-  gap: 0.75rem;
-  text-decoration: none;
-  color: #fff;
-}
-
+/* ===== Logo superior izquierdo ===== */
 .site-logo {
-  height: 90px;    
+  max-height: 65px;        /* 🔹 controla tamaño del logo */
   width: auto;
+  margin-right: 0.75rem;
   display: inline-block;
   vertical-align: middle;
 }
 
-.brand-text {
+/* Marca */
+.brand {
   display: flex;
-  flex-direction: column; 
-  justify-content: center;
+  align-items: baseline;
+  text-decoration: none;
+  color: #fff;
 }
 
 .brand-title {
   font-size: 1.8rem;
   font-weight: 900;
-  line-height: 1.2;
-  color: #fff;
+  margin-right: 1rem;
 }
 
 .tagline {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #fff;
-  opacity: 0.9;
-  margin-top: 0.2rem;
+  opacity: 0.95;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ===== Navegación ===== */
+/* Navegación */
 .nav {
   display: flex;
   align-items: center;
@@ -180,24 +178,17 @@ body {
 
 /* ===== Cards de destacados ===== */
 .featured-cards {
-  display: grid; 
-  gap: 1rem; 
-  margin: .5rem 0 1.5rem;
+  display: grid; gap: 1rem; margin: .5rem 0 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;   /* 🔹 Fondo nuevo */
+  background: var(--card-bg);
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-.card h3 { 
-  margin: 0 0 .35rem; 
-  line-height: 1.25; 
-  color: #000;        /* 🔹 Título negro */
-}
-.card a { color: #000 !important; } /* 🔹 Enlaces negros */
+.card h3 { margin: 0 0 .35rem; line-height: 1.25; color: var(--accent); }
 .card p  { margin: 0; color: var(--fg); }
 
 /* ===== Lista de últimos posts ===== */
@@ -209,7 +200,7 @@ body {
 .post-card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;   /* 🔹 Fondo nuevo */
+  background: var(--card-bg);
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
   transition: transform .12s ease, box-shadow .12s ease;
@@ -222,10 +213,6 @@ body {
   color: var(--muted);
   font-size: .9rem;
   margin: .25rem 0 .5rem;
-}
-.post-card h3,
-.post-card a { 
-  color: #000 !important; /* 🔹 Negro en títulos */
 }
 .post-thumb {
   width: 100%;
@@ -245,134 +232,8 @@ body {
   background: #f3ede9;
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 900px) {
   .tagline { display: none; }
   .search-input { min-width: 140px; }
 }
-/* ===== Estilos de página de post ===== */
-.post-page {
-  background: #E2DCD5;   /* igual que featured y latest */
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-
-.post-header {
-  margin-bottom: 1.5rem;
-}
-
-.post-title {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 2.4rem;
-  font-weight: 900;
-  margin: 0 0 0.5rem;
-  color: #111;
-}
-
-.post-meta {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.post-content {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--fg);
-}
-
-.post-content h2, 
-.post-content h3 {
-  color: #111;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.post-content p {
-  margin-bottom: 1.2rem;
-}
-
-.post-content ul, 
-.post-content ol {
-  margin-left: 1.5rem;
-  margin-bottom: 1.2rem;
-}
-/* ===== Post individual ===== */
-.post-container {
-  background: #E2DCD5;
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
-}
-
-.post-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  color: #222;
-  text-align: center;
-}
-
-.post-content {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #333;
-}
-.post-content h2 {
-  margin-top: 2rem;
-  font-size: 1.4rem;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: .3rem;
-}
-.post-content ul, .post-content ol {
-  margin-left: 1.5rem;
-}
-.related-posts {
-  background: #e2dcd5;
-  padding: 1rem 1.5rem;
-  margin-top: 2rem;
-  border-radius: 12px;
-  border: 1px solid #d5cfc7;
-}
-
-.related-posts h3, 
-.related-posts h4 {
-  color: #2c2c2c;
-  margin-top: 0.5rem;
-}
-
-.related-posts ul {
-  list-style: none;
-  padding: 0;
-}
-
-.related-posts li {
-  margin: 0.3rem 0;
-}
-
-.related-posts a {
-  color: #000;
-  text-decoration: none;
-}
-
-.related-posts a:hover {
-  text-decoration: underline;
-}
-/* ===== Contenedor central para posts y páginas ===== */
-.post-card,
-.page-body {
-  max-width: 900px;   /* 🔹 ancho fijo típico de blogs */
-  margin: 0 auto;     /* centrado automático */
-  padding: 2rem;      /* espacio interno */
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.05);
-}
-
