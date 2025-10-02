@@ -250,3 +250,53 @@ body {
   .tagline { display: none; }
   .search-input { min-width: 140px; }
 }
+/* ===== Estilos de página de post ===== */
+.post-page {
+  background: #E2DCD5;   /* igual que featured y latest */
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+  color: #111;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+.post-content h2, 
+.post-content h3 {
+  color: #111;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-content p {
+  margin-bottom: 1.2rem;
+}
+
+.post-content ul, 
+.post-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
