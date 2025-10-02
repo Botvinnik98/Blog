@@ -145,62 +145,64 @@ body {
   color: #666;
 }
 
-/* ===== Utilidad Full-Bleed + Hero/Featured con banda ===== */
+/* ===== Banda full-bleed estable para Hero (título+frase) y Featured ===== */
 
-/* Color de la banda que ocupa de lado a lado (puedes ajustar) */
-:root { --band-bg: #ece5de; } /* tono suave, coherente con tu paleta */
+/* Color de la banda que ocupa de lado a lado */
+:root { --band-bg: #ece5de; } /* ajusta a tu gusto (#e9e3dd, #f0ebe6, etc.) */
 
-.bleed{
+/* Clase utilitaria muy robusta para full-bleed */
+.full-bleed {
+  position: relative;
+  display: block;
   width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* Relleno lateral para que el contenido quede alineado con el cuerpo */
   padding-left: min(2rem, 5vw);
   padding-right: min(2rem, 5vw);
-}
-
-/* Aplicamos full-bleed y fondo a título, subtítulo y featured */
-.page-body .hero-title,
-.page-body .hero-subtitle,
-.page-body .featured-cards{
-  @extend .bleed;
   background: var(--band-bg);
 }
 
-/* Ajustes tipográficos y de separación para la banda del hero */
-.page-body .hero-title{
+/* Aplica full-bleed a título, frase y featured */
+.page-body .hero-title { 
+  @extend .full-bleed;
   margin-top: 1.5rem;
-  margin-bottom: .75rem;     /* junta visualmente con el subtítulo */
+  margin-bottom: .25rem;
   padding-top: 1.25rem;
   padding-bottom: 0;
+  border-bottom: 0;         /* sin borde aquí */
 }
 
-/* Línea divisora bajo la frase (subtítulo) */
-.page-body .hero-subtitle{
+.page-body .hero-subtitle {
+  @extend .full-bleed;
+  margin: 0;
   padding-top: .25rem;
   padding-bottom: 1.25rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #d5cfc7; /* separa del bloque destacado */
+  border-bottom: 1px solid #d5cfc7; /* línea separadora bajo la frase */
 }
 
-/* Featured a todo el ancho con una línea divisora abajo */
-.page-body .featured-cards{
+/* Featured a todo el ancho y con línea separadora abajo */
+.page-body .featured-cards {
+  @extend .full-bleed;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid #d5cfc7;  /* separa de “Latest Posts” */
+  margin: 0 0 1.25rem 0;
+  border-bottom: 1px solid #d5cfc7;  /* línea entre Featured y Latest */
 }
 
-/* === Tarjetas destacados (mantiene tu gris y contraste) === */
+/* Tarjetas (mantén tu gris, contrastes y sombra) */
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;
+  background: #E2DCD5;           /* gris de las tarjetas */
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
 .card h3 { color: #000; }
 .card a  { color: #000 !important; }
+
 
 
 /* ===== Lista de últimos posts ===== */
