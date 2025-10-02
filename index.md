@@ -4,28 +4,37 @@ title: "Welcome"
 permalink: /
 ---
 
-<!-- Hero Title -->
-<h1 class="hero-title">Beyond The Charts</h1>
-<p class="hero-subtitle">
-  Markets are not boring graphs: they are dramas with villains, heroes, and unexpected twists.  
-  At BeyondTheCharts, we tell you the financial saga that Wall Street would prefer to keep secret.
-</p>
+<!-- HERO full-bleed -->
+<section class="full-bleed hero-band">
+  <div class="inner">
+    <h1 class="hero-title">Beyond The Charts</h1>
+    <p class="hero-subtitle">
+      Markets are not boring graphs: they are dramas with villains, heroes, and unexpected twists.  
+      At BeyondTheCharts, we tell you the financial saga that Wall Street would prefer to keep secret.
+    </p>
+  </div>
+</section>
 
 ---
 
 ## ⭐ Featured Articles
-<div class="featured-cards">
-{% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
-{% for post in featured %}
-  <article class="card">
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
-  </article>
-{% endfor %}
-{% if featured == empty %}
-  <p>Add <code>featured: true</code> in a post front matter to show it here.</p>
-{% endif %}
-</div>
+<!-- FEATURED full-bleed -->
+<section class="full-bleed featured-band">
+  <div class="inner">
+    <div class="featured-cards">
+    {% assign featured = site.posts | where_exp:"p","p.featured == true" | slice: 0, 3 %}
+    {% for post in featured %}
+      <article class="card">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+      </article>
+    {% endfor %}
+    {% if featured == empty %}
+      <p>Add <code>featured: true</code> in a post front matter to show it here.</p>
+    {% endif %}
+    </div>
+  </div>
+</section>
 
 ---
 
