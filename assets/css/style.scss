@@ -61,16 +61,6 @@ body {
 .brand-block { padding-left: 12px; }
 .topbar-right { margin-left: auto; padding-right: 12px; }
 
-/* 🔧 Forzamos una sola línea y el orden: buscador a la izq. del menú */
-.topbar-right{
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  flex-wrap: nowrap;
-}
-.search-form { order: 0; margin: 0; }
-.nav { order: 1; display: flex; align-items: center; gap: 1rem; }
-
 .topbar-left {
   display: flex;
   align-items: center;
@@ -131,7 +121,9 @@ body {
 .nav a:hover { text-decoration: underline; }
 
 /* ===== Buscador ===== */
-/* (mantenemos el estilo pero sin margen extra porque ya usamos gap en .topbar-right) */
+.search-form {
+  margin-right: 1rem;
+}
 .search-input {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
@@ -143,23 +135,6 @@ body {
 }
 .search-input::placeholder {
   color: #666;
-}
-
-/* ===== Utilidad Full-Bleed ===== */
-.bleed{
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: min(2rem, 5vw);
-  padding-right: min(2rem, 5vw);
-}
-
-/* Aplicamos full-bleed a hero (título + subtítulo) y a featured SIN tocar HTML */
-.page-body .hero-title,
-.page-body .hero-subtitle,
-.page-body .featured-cards{
-  @extend .bleed;
 }
 
 /* ===== Hero Title ===== */
@@ -290,7 +265,9 @@ body {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
-.post-header { margin-bottom: 1.5rem; }
+.post-header {
+  margin-bottom: 1.5rem;
+}
 
 .post-title {
   font-family: "Playfair Display", Georgia, serif;
@@ -300,7 +277,10 @@ body {
   color: #111;
 }
 
-.post-meta { color: var(--muted); font-size: 0.9rem; }
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 
 .post-content {
   font-size: 1.05rem;
@@ -315,7 +295,9 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.post-content p { margin-bottom: 1.2rem; }
+.post-content p {
+  margin-bottom: 1.2rem;
+}
 
 .post-content ul, 
 .post-content ol {
@@ -353,7 +335,9 @@ body {
   border-bottom: 2px solid var(--accent);
   padding-bottom: .3rem;
 }
-.post-content ul, .post-content ol { margin-left: 1.5rem; }
+.post-content ul, .post-content ol {
+  margin-left: 1.5rem;
+}
 
 /* ===== Contenedor central para posts y páginas (si lo usas en otras vistas) ===== */
 .post-card,
