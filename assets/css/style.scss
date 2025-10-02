@@ -350,3 +350,47 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,.05);
 }
+
+/* ===== Full-bleed (bandas a pantalla completa, como el ticker) ===== */
+.full-bleed{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  margin-right:calc(-50vw + 50%);
+}
+
+/* Cuando los full-bleed están dentro de .page-body (que es tipo “card”), anulamos ese look */
+.page-body .full-bleed{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:0;
+  max-width:none;
+}
+
+/* Contenedor interno centrado para el contenido de las bandas */
+.full-bleed .inner{
+  max-width:var(--maxw-limit);
+  width:var(--maxw);
+  margin:0 auto;
+  padding:2rem;
+}
+
+/* Banda del HERO */
+.hero-band{
+  background:#f1ebe5;
+  border-bottom:1px solid var(--card-border);
+}
+.hero-band .hero-title{ margin-top:0; }
+.hero-band .hero-subtitle{ margin-bottom:0; }
+
+/* Banda de FEATURED */
+.featured-band{
+  background:#efe9e3;
+  border-top:1px solid var(--card-border);
+  border-bottom:1px solid var(--card-border);
+}
+.featured-band .featured-cards{
+  margin:0;
+  padding-top:.5rem;
+  padding-bottom:1rem;
+}
