@@ -5,124 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
-    <!-- CSS (cache-buster con build_revision) -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+    <!-- CSS con cache-buster compatible -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.time | relative_url }}">
   </head>
   <body>
-    <!-- 🔝 Topbar -->
+    <!-- 🔝 Topbar embebida (sin includes) -->
     <header class="site-topbar">
       <div class="container topbar-flex">
-
-        <!-- Izquierda: Logo + Marca + Tagline -->
-        <div class="brand-block">
-          <a href="{{ '/' | relative_url }}" class="brand">
-            <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="BTC Logo" class="site-logo">
-            <div class="brand-text">
-              <span class="brand-title">{{ site.title }}</span>
-              <div class="tagline">{{ site.tagline }}</div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Derecha: Buscador + Menú -->
-        <div class="topbar-right">
-          <form action="{{ '/' | relative_url }}" method="get" class="search-form">
-            <input type="text" name="q" placeholder="Search articles..." class="search-input">
-          </form>
-          <nav class="nav">
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/markets/' | relative_url }}">Markets</a>
-            <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
-            <a href="{{ '/culture/' | relative_url }}">Misc</a>
-            <a href="{{ '/about/'   | relative_url }}">About</a>
-          </nav>
-        </div>
+        <a href="{{ '/' | relative_url }}" class="brand">
+          <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="Logo" class="site-logo">
+          <span class="brand-title">{{ site.title }}</span>
+        </a>
+        <span class="tagline">{{ site.tagline }}</span>
+        <nav class="nav">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/markets/' | relative_url }}">Markets</a>
+          <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
+          <a href="{{ '/culture/' | relative_url }}">Misc</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
       </div>
     </header>
-
-    <!-- 📦 Resultados buscador -->
-    <div id="search-results"
-         style="display:none;background:#fff;position:absolute;top:80px;right:2rem;z-index:200;padding:1rem;border:1px solid #ddd;border-radius:6px;max-width:300px;">
-    </div>
-
-    <!-- 📈 Ticker -->
-    <div class="ticker-bar tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
-        "symbols": [
-          { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
-          { "proName": "NASDAQ:IXIC", "title": "NASDAQ" },
-          { "proName": "DJI", "title": "Dow Jones" },
-          { "proName": "CME_MINI:ES1!", "title": "E-Mini S&P Futures" },
-          { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
-          { "proName": "COMEX:GC1!", "title": "Gold" },
-          { "proName": "NYMEX:CL1!", "title": "Crude Oil" },
-          { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
-          { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" }
-        ],
-        "showSymbolLogo": true,
-        "colorTheme": "dark",
-        "isTransparent": false,
-        "displayMode": "adaptive",
-        "locale": "en"
-      }
-      </script>
-    </div>
 
     <!-- 📄 Contenido -->
     <main class="container page-body">
       {{ content }}
     </main>
 
-    <!-- 📑 Footer -->
+    <!-- 📑 Footer embebido -->
     <footer class="container site-footer">
       <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
     </footer>
-
-    <!-- 🔍 Script buscador -->
-    <script>
-      let idx, store;
-      fetch("{{ '/search.json' | relative_url }}")
-        .then(res => res.json())
-        .then(data => {
-          store = data;
-          idx = lunr(function () {
-            this.ref("url");
-            this.field("title");
-            this.field("excerpt");
-            this.field("categories");
-            data.forEach(doc => this.add(doc));
-          });
-        });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.querySelector(".search-input");
-        const resultsBox = document.getElementById("search-results");
-
-        if (searchInput) {
-          searchInput.addEventListener("input", function () {
-            const query = this.value;
-            resultsBox.innerHTML = "";
-            if (query.length < 2) {
-              resultsBox.style.display = "none";
-              return;
-            }
-            resultsBox.style.display = "block";
-
-            const results = idx.search(query);
-            if (results.length > 0) {
-              results.forEach(r => {
-                const item = store.find(d => d.url === r.ref);
-                resultsBox.innerHTML += `<p><a href="${item.url}">${item.title}</a></p>`;
-              });
-            } else {
-              resultsBox.innerHTML = "<p>No results found</p>";
-            }
-          });
-        }
-      });
-    </script>
   </body>
 </html>
