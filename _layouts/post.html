@@ -4,40 +4,34 @@ layout: default
 
 <article class="post">
 
-  <!-- Título -->
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       {{ page.date | date: "%B %d, %Y" }}
-      {% if page.categories %} · Categorías: 
+      {% if page.categories %}
+        ·
         {% for category in page.categories %}
-          <a href="{{ site.baseurl }}/{{ category | downcase }}/">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
+          <a href="{{ site.baseurl }}/{{ category | downcase }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
         {% endfor %}
       {% endif %}
     </p>
   </header>
 
-  <!-- Contenido del artículo -->
   <div class="post-content">
     {{ content }}
   </div>
 
-  <!-- Artículos relacionados -->
-  <div class="related-posts card" style="margin-top:2rem; padding:1rem; background:#E2DCD5; border-radius:12px;">
-    <h3 style="margin-top:0;">📌 Artículos relacionados</h3>
-
-    <!-- Automático por categoría -->
-    <h4>Por categoría</h4>
+  <hr>
+  <div class="related-posts">
+    <h3>Artículos relacionados</h3>
     <ul>
-      {% assign current_cat = page.categories[0] %}
       {% for post in site.posts %}
-        {% if post.categories contains current_cat and post.url != page.url %}
+        {% if post.categories contains page.categories[0] and post.url != page.url %}
           <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endif %}
       {% endfor %}
     </ul>
 
-    <!-- Manualmente destacados -->
     {% if page.related %}
       <h4>Destacados</h4>
       <ul>
@@ -50,5 +44,4 @@ layout: default
       </ul>
     {% endif %}
   </div>
-
 </article>
