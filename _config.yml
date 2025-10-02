@@ -1,11 +1,13 @@
 title: "BeyondTheCharts"
 description: ""   # no mostramos texto abajo
 
-remote_theme: pages-themes/cayman@v0.2.0
+# ✅ Usamos nuestro propio default.html y estilos,
+# desactivamos el remote_theme de Cayman
+theme: null       
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-remote-theme
 
 header_pages:
   - markets/index.md
@@ -15,4 +17,10 @@ header_pages:
   - about/index.md
 
 markdown: kramdown
+
 tagline: "Reflections on markets, legendary investors and financial scandals"
+
+# Opcional: configuración SEO extra
+permalink: /:categories/:year/:month/:day/:title/
+paginate: 10
+paginate_path: "/page:num/"
