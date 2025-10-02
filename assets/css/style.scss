@@ -364,4 +364,15 @@ body {
 .related-posts a:hover {
   text-decoration: underline;
 }
+/* ===== Contenedor central para posts y páginas ===== */
+.post-card,
+.page-body {
+  max-width: 900px;   /* 🔹 ancho fijo típico de blogs */
+  margin: 0 auto;     /* centrado automático */
+  padding: 2rem;      /* espacio interno */
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
 
