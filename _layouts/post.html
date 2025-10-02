@@ -1,56 +1,62 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} · {{ site.title }}</title>
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    {% include header.html %}
 
-<article class="post-card">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      {{ page.date | date: "%B %d, %Y" }}
-      {% if page.categories %}
-        · Categorías: 
-        {% for category in page.categories %}
-          <a href="{{ site.baseurl }}/{{ category | downcase }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-      {% endif %}
-    </p>
-  </header>
-
-  <!-- Contenido principal -->
-  <div class="post-content">
-    {{ content }}
-  </div>
-
-  <!-- Artículos relacionados -->
-  <div class="related-posts" style="margin-top:2rem;">
-    <div class="card" style="background:#E2DCD5; padding:1rem; border-radius:12px;">
-      <h3 style="margin-top:0;">📌 Artículos relacionados</h3>
-
-      <!-- Automático por categoría -->
-      <h4>De la misma categoría</h4>
-      <ul>
-        {% assign current_cat = page.categories[0] %}
-        {% for post in site.posts %}
-          {% if post.categories contains current_cat and post.url != page.url %}
-            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-
-      <!-- Manualmente destacados -->
-      {% if page.related %}
-        <h4>Destacados</h4>
-        <ul>
-          {% for link in page.related %}
-            {% assign rel_post = site.posts | where:"url", link | first %}
-            {% if rel_post %}
-              <li><a href="{{ rel_post.url | relative_url }}">{{ rel_post.title }}</a></li>
+    <!-- Contenido del post en tarjeta centrada -->
+    <main class="page-body">
+      <article class="post-card">
+        <header class="post-header">
+          <h1 class="post-title">{{ page.title }}</h1>
+          <p class="post-meta">
+            {{ page.date | date: "%B %d, %Y" }}
+            {% if page.categories %} · 
+              {% for category in page.categories %}
+                <a href="{{ site.baseurl }}/{{ category | downcase }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
             {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-  </div>
-</article>
+          </p>
+        </header>
 
+        <div class="post-content">
+          {{ content }}
+        </div>
 
+        <!-- Artículos relacionados -->
+        <section class="related-posts">
+          <h2>Artículos relacionados</h2>
+          
+          <h3>De la misma categoría</h3>
+          <ul>
+            {% for post in site.posts %}
+              {% if post.categories contains page.categories[0] and post.url != page.url %}
+                <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+
+          {% if page.related %}
+            <h3>Destacados</h3>
+            <ul>
+              {% for link in page.related %}
+                {% assign rel_post = site.posts | where:"url", link | first %}
+                {% if rel_post %}
+                  <li><a href="{{ rel_post.url | relative_url }}">{{ rel_post.title }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </section>
+      </article>
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>
