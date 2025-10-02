@@ -24,3 +24,4 @@ tagline: "Reflections on markets, legendary investors and financial scandals"
 permalink: /:categories/:year/:month/:day/:title/
 paginate: 10
 paginate_path: "/page:num/"
+
