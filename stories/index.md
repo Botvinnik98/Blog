@@ -15,4 +15,3 @@ permalink: /stories/
     </div>
   {% endfor %}
 </div>
-
