@@ -1,10 +1,24 @@
-<!-- _includes/header.html -->
-<header class="site-header">
-  <div class="container">
-    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    {% if site.tagline %}
-      <p class="site-tagline">{{ site.tagline }}</p>
-    {% endif %}
+<header class="site-topbar">
+  <div class="container topbar-flex">
+    <!-- Logo + Marca -->
+    <a href="{{ '/' | relative_url }}" class="brand">
+      <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="Logo" class="site-logo">
+      <span class="brand-title">{{ site.title }}</span>
+    </a>
+    <span class="tagline">{{ site.tagline }}</span>
+
+    <!-- Buscador + Menú -->
+    <div class="topbar-right">
+      <form action="{{ '/' | relative_url }}" method="get" class="search-form">
+        <input type="text" name="q" placeholder="Search articles..." class="search-input">
+      </form>
+      <nav class="nav">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/markets/' | relative_url }}">Markets</a>
+        <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
+        <a href="{{ '/culture/' | relative_url }}">Misc</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+      </nav>
+    </div>
   </div>
 </header>
-
