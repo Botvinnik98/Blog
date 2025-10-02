@@ -1,5 +1,6 @@
 title: "BeyondTheCharts"
-description: ""   # no mostramos texto abajo
+description: ""
+tagline: "Reflections on markets, legendary investors and financial scandals"
 
 plugins:
   - jekyll-feed
@@ -13,5 +14,3 @@ header_pages:
   - about/index.md
 
 markdown: kramdown
-
-tagline: "Reflections on markets, legendary investors and financial scandals"
