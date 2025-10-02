@@ -145,7 +145,11 @@ body {
   color: #666;
 }
 
-/* ===== Utilidad Full-Bleed ===== */
+/* ===== Utilidad Full-Bleed + Hero/Featured con banda ===== */
+
+/* Color de la banda que ocupa de lado a lado (puedes ajustar) */
+:root { --band-bg: #ece5de; } /* tono suave, coherente con tu paleta */
+
 .bleed{
   width: 100vw;
   max-width: 100vw;
@@ -155,78 +159,49 @@ body {
   padding-right: min(2rem, 5vw);
 }
 
-/* Aplicamos full-bleed a hero (título + subtítulo) y a featured SIN tocar HTML */
+/* Aplicamos full-bleed y fondo a título, subtítulo y featured */
 .page-body .hero-title,
 .page-body .hero-subtitle,
 .page-body .featured-cards{
   @extend .bleed;
+  background: var(--band-bg);
 }
 
-/* ===== Hero Title ===== */
-.hero-title {
-  display: block;              
-  text-align: center;          
-  font-size: 3.2rem;
-  font-weight: 900;
-  font-family: "Playfair Display", Georgia, serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 2rem auto 1rem;
-  color: #2c2c2c;
-  border-bottom: 5px solid var(--accent);
-  width: 100%;
-  padding-bottom: .3rem;
+/* Ajustes tipográficos y de separación para la banda del hero */
+.page-body .hero-title{
+  margin-top: 1.5rem;
+  margin-bottom: .75rem;     /* junta visualmente con el subtítulo */
+  padding-top: 1.25rem;
+  padding-bottom: 0;
 }
 
-.hero-subtitle {
-  text-align: center;
-  font-size: 1.25rem;
-  font-family: "Merriweather", Georgia, serif;
-  color: #444;
-  max-width: 1100px; 
-  margin: 0 auto 2rem;
-  line-height: 1.6;
+/* Línea divisora bajo la frase (subtítulo) */
+.page-body .hero-subtitle{
+  padding-top: .25rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d5cfc7; /* separa del bloque destacado */
 }
 
-/* ===== Ticker full-width ===== */
-.ticker-bar {
-  width: 100vw;   
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  background: #111;
+/* Featured a todo el ancho con una línea divisora abajo */
+.page-body .featured-cards{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #d5cfc7;  /* separa de “Latest Posts” */
 }
 
-.tradingview-widget-container,
-.tradingview-widget-container__widget,
-.tradingview-widget-container iframe {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: block;
-}
-
-/* ===== Cards de destacados ===== */
-.featured-cards {
-  display: grid; 
-  gap: 1rem; 
-  margin: .5rem 0 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
+/* === Tarjetas destacados (mantiene tu gris y contraste) === */
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;   /* 🔹 Fondo nuevo */
+  background: #E2DCD5;
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-.card h3 { 
-  margin: 0 0 .35rem; 
-  line-height: 1.25; 
-  color: #000;        /* 🔹 Título negro */
-}
-.card a { color: #000 !important; } /* 🔹 Enlaces negros */
-.card p  { margin: 0; color: var(--fg); }
+.card h3 { color: #000; }
+.card a  { color: #000 !important; }
+
 
 /* ===== Lista de últimos posts ===== */
 .post-cards {
