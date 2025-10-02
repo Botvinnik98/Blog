@@ -5,36 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} · {{ site.title }}</title>
     {% seo %}
-    <!-- CSS con cache-buster compatible -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.time | relative_url }}">
   </head>
   <body>
-    <!-- 🔝 Topbar embebida (sin includes) -->
-    <header class="site-topbar">
-      <div class="container topbar-flex">
-        <a href="{{ '/' | relative_url }}" class="brand">
-          <img src="{{ '/assets/images/btc-logo.png' | relative_url }}" alt="Logo" class="site-logo">
-          <span class="brand-title">{{ site.title }}</span>
-        </a>
-        <span class="tagline">{{ site.tagline }}</span>
-        <nav class="nav">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/markets/' | relative_url }}">Markets</a>
-          <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
-          <a href="{{ '/culture/' | relative_url }}">Misc</a>
-          <a href="{{ '/about/' | relative_url }}">About</a>
-        </nav>
-      </div>
-    </header>
+    {% include header.html %}
 
-    <!-- 📄 Contenido -->
     <main class="container page-body">
       {{ content }}
     </main>
 
-    <!-- 📑 Footer embebido -->
-    <footer class="container site-footer">
-      <p>© {{ site.title }} {{ 'now' | date: '%Y' }}</p>
-    </footer>
+    {% include footer.html %}
   </body>
 </html>
