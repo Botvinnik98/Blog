@@ -4,6 +4,7 @@ layout: default
 
 <article class="post">
 
+  <!-- Título del artículo -->
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
@@ -17,13 +18,18 @@ layout: default
     </p>
   </header>
 
+  <!-- Contenido principal -->
   <div class="post-content">
     {{ content }}
   </div>
 
+  <!-- 🔗 Artículos relacionados -->
   <hr>
   <div class="related-posts">
     <h3>Artículos relacionados</h3>
+
+    <!-- Automático por categoría -->
+    <h4>De la misma categoría</h4>
     <ul>
       {% for post in site.posts %}
         {% if post.categories contains page.categories[0] and post.url != page.url %}
@@ -32,6 +38,7 @@ layout: default
       {% endfor %}
     </ul>
 
+    <!-- Manualmente seleccionados -->
     {% if page.related %}
       <h4>Destacados</h4>
       <ul>
@@ -44,4 +51,6 @@ layout: default
       </ul>
     {% endif %}
   </div>
+
 </article>
+
