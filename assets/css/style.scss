@@ -374,3 +374,15 @@ hr {
 .pb-0 { padding-bottom: 0 !important; }
 
 /* Fin del archivo */
+/* Imagen de portada dentro de tarjetas (cover, recorta si sobra) */
+.post-thumb {
+  width: 100%;
+  height: 220px;            /* ajusta a tu gusto */
+  object-fit: cover;        /* recorta manteniendo proporción */
+  object-position: center;  /* centra el recorte */
+  border-radius: 10px;
+  display: block;
+}
+@media (max-width: 900px){
+  .post-thumb { height: 160px; }
+}
