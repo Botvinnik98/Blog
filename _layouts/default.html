@@ -1,3 +1,7 @@
+---
+# layout base, no tocar
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,7 +40,7 @@
             <a href="{{ '/markets/' | relative_url }}">Markets</a>
             <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
             <a href="{{ '/culture/' | relative_url }}">Misc</a>
-            <a href="{{ '/about/'   | relative_url }}">About</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
           </nav>
         </div>
       </div>
@@ -73,18 +77,8 @@
     </div>
 
     <!-- 📄 Contenido -->
-    <main>
-      <!-- Sección ancho completo (featured/hero/etc.) -->
-      {% if page.full_width %}
-        <section class="full-width-section">
-          {{ content }}
-        </section>
-      {% else %}
-        <!-- Sección normal centrada -->
-        <section class="container page-body">
-          {{ content }}
-        </section>
-      {% endif %}
+    <main class="container page-body">
+      {{ content }}
     </main>
 
     <!-- 📑 Footer -->
