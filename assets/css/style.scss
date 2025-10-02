@@ -6,14 +6,17 @@
 
 /* ===== Variables base ===== */
 :root {
-  --maxw: 90%;             
-  --maxw-limit: 1600px;    
-  --bg: #faf7f5;           
-  --fg: #222;              
-  --accent: #B0A08D;       
-  --muted: #666;           
-  --card-bg: #E2DCD5;      /* 🔹 Nuevo fondo por defecto para tarjetas */
-  --card-border: #e5ded8;  
+  --maxw: 90%;
+  --maxw-limit: 1600px;
+  --bg: #faf7f5;
+  --fg: #222;
+  --accent: #B0A08D;
+  --muted: #666;
+  --card-bg: #E2DCD5;      /* Fondo tarjetas */
+  --card-border: #e5ded8;
+
+  /* Fondo de la banda que ocupa todo el ancho (hero + featured) */
+  --band-bg: #ece5de;      /* Ajusta el tono si quieres (#e9e3dd, #f0ebe6, ...) */
 }
 
 body {
@@ -38,14 +41,13 @@ body {
   height: 90px;
   width: 100%;
   margin: 0;
-  background: var(--accent); 
+  background: var(--accent);
   color: #fff;
   border: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-/* Anula el padding lateral del container SOLO en la topbar
-   para que el contenido llegue al borde de la ventana */
+/* El contenido de la topbar llega hasta los bordes */
 .site-topbar .container {
   display: flex;
   align-items: center;
@@ -57,30 +59,13 @@ body {
   padding-right: 0;
 }
 
-/* Mini-respiro (ajústalo a 0 si lo quieres totalmente pegado) */
 .brand-block { padding-left: 12px; }
 .topbar-right { margin-left: auto; padding-right: 12px; }
-
-/* 🔧 Forzamos una sola línea y el orden: buscador a la izq. del menú */
-.topbar-right{
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  flex-wrap: nowrap;
-}
-.search-form { order: 0; margin: 0; }
-.nav { order: 1; display: flex; align-items: center; gap: 1rem; }
-
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
 /* ===== Logo + Marca ===== */
 .brand {
   display: flex;
-  align-items: center; 
+  align-items: center;
   gap: 0.75rem;
   text-decoration: none;
   color: #fff;
@@ -88,7 +73,7 @@ body {
 }
 
 .site-logo {
-  height: 90px;    
+  height: 90px;
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -96,7 +81,7 @@ body {
 
 .brand-text {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -123,15 +108,15 @@ body {
   gap: 1rem;
 }
 
-.nav a { 
-  text-decoration: none; 
-  font-weight: 600; 
-  color: #fff; 
+.nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
 }
 .nav a:hover { text-decoration: underline; }
 
 /* ===== Buscador ===== */
-/* (mantenemos el estilo pero sin margen extra porque ya usamos gap en .topbar-right) */
+.search-form { margin-right: 1rem; }
 .search-input {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
@@ -141,16 +126,28 @@ body {
   color: #000;
   background: #fff;
 }
-.search-input::placeholder {
-  color: #666;
+.search-input::placeholder { color: #666; }
+
+/* ===== Ticker a ancho completo ===== */
+.ticker-bar {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: #111;
+}
+.tradingview-widget-container,
+.tradingview-widget-container__widget,
+.tradingview-widget-container iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
 }
 
-/* ===== Banda full-bleed estable para Hero (título+frase) y Featured ===== */
+/* ===== Hero (título + frase) y Featured con banda full-bleed ===== */
 
-/* Color de la banda que ocupa de lado a lado */
-:root { --band-bg: #ece5de; } /* ajusta a tu gusto (#e9e3dd, #f0ebe6, etc.) */
-
-/* Clase utilitaria muy robusta para full-bleed */
+/* Utilidad robusta para sangrar a todo el ancho */
 .full-bleed {
   position: relative;
   display: block;
@@ -159,53 +156,72 @@ body {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  /* Relleno lateral para que el contenido quede alineado con el cuerpo */
+  background: var(--band-bg);
+  /* alineado con el layout central */
   padding-left: min(2rem, 5vw);
   padding-right: min(2rem, 5vw);
-  background: var(--band-bg);
 }
 
-/* Aplica full-bleed a título, frase y featured */
-.page-body .hero-title { 
+/* Título a ancho completo (sin borde aquí) */
+.page-body .hero-title {
   @extend .full-bleed;
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 900;
+  font-family: "Playfair Display", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c2c2c;
   margin-top: 1.5rem;
   margin-bottom: .25rem;
   padding-top: 1.25rem;
   padding-bottom: 0;
-  border-bottom: 0;         /* sin borde aquí */
+  border-bottom: 0;
 }
 
+/* Frase a ancho completo + línea separadora */
 .page-body .hero-subtitle {
   @extend .full-bleed;
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: "Merriweather", Georgia, serif;
+  color: #444;
   margin: 0;
   padding-top: .25rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #d5cfc7; /* línea separadora bajo la frase */
+  border-bottom: 1px solid #d5cfc7;
+  line-height: 1.6;
+  max-width: 1100px; /* para que la lectura sea cómoda */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Featured a todo el ancho y con línea separadora abajo */
+/* Featured a ancho completo + línea separadora con Latest */
 .page-body .featured-cards {
   @extend .full-bleed;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 0 0 1.25rem 0;
-  border-bottom: 1px solid #d5cfc7;  /* línea entre Featured y Latest */
+  border-bottom: 1px solid #d5cfc7;
+
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Tarjetas (mantén tu gris, contrastes y sombra) */
+/* ===== Tarjetas (destacados y latest) ===== */
 .card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;           /* gris de las tarjetas */
+  background: var(--card-bg);
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
-.card h3 { color: #000; }
+.card h3 { margin: 0 0 .35rem; line-height: 1.25; color: #000; }
 .card a  { color: #000 !important; }
+.card p  { margin: 0; color: var(--fg); }
 
-
-
-/* ===== Lista de últimos posts ===== */
+/* Lista columnar “Latest Posts” (ancho estándar del sitio) */
 .post-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -214,7 +230,7 @@ body {
 .post-card {
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  background: #E2DCD5;   /* 🔹 Fondo nuevo */
+  background: var(--card-bg);
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.04);
   transition: transform .12s ease, box-shadow .12s ease;
@@ -223,15 +239,9 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(0,0,0,.08);
 }
-.post-card .meta {
-  color: var(--muted);
-  font-size: .9rem;
-  margin: .25rem 0 .5rem;
-}
+.post-card .meta { color: var(--muted); font-size: .9rem; margin: .25rem 0 .5rem; }
 .post-card h3,
-.post-card a { 
-  color: #000 !important; /* 🔹 Negro en títulos */
-}
+.post-card a { color: #000 !important; }
 .post-thumb {
   width: 100%;
   height: auto;
@@ -250,15 +260,9 @@ body {
   background: #f3ede9;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .tagline { display: none; }
-  .search-input { min-width: 140px; }
-}
-
-/* ===== Estilos de página de post ===== */
+/* ===== Página de post ===== */
 .post-page {
-  background: #E2DCD5;   /* igual que featured y latest */
+  background: #E2DCD5;
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 2rem;
@@ -275,32 +279,19 @@ body {
   font-weight: 900;
   margin: 0 0 0.5rem;
   color: #111;
+  text-align: center;
 }
 
 .post-meta { color: var(--muted); font-size: 0.9rem; }
 
-.post-content {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--fg);
-}
+.post-content { font-size: 1.05rem; line-height: 1.7; color: var(--fg); }
+.post-content h2 { margin-top: 2rem; font-size: 1.4rem; border-bottom: 2px solid var(--accent); padding-bottom: .3rem; }
+.post-content h3 { margin-top: 1.5rem; }
+.post-content p  { margin-bottom: 1.2rem; }
+.post-content ul,
+.post-content ol { margin-left: 1.5rem; margin-bottom: 1.2rem; }
 
-.post-content h2, 
-.post-content h3 {
-  color: #111;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.post-content p { margin-bottom: 1.2rem; }
-
-.post-content ul, 
-.post-content ol {
-  margin-left: 1.5rem;
-  margin-bottom: 1.2rem;
-}
-
-/* ===== Post individual ===== */
+/* Contenedor post “clásico” */
 .post-container {
   background: #E2DCD5;
   border: 1px solid var(--card-border);
@@ -311,35 +302,13 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
 
-.post-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  color: #222;
-  text-align: center;
-}
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .tagline { display: none; }
+  .search-input { min-width: 140px; }
 
-.post-content {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #333;
-}
-.post-content h2 {
-  margin-top: 2rem;
-  font-size: 1.4rem;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: .3rem;
-}
-.post-content ul, .post-content ol { margin-left: 1.5rem; }
-
-/* ===== Contenedor central para posts y páginas (si lo usas en otras vistas) ===== */
-.post-card,
-.page-body {
-  max-width: 900px;   /* 🔹 ancho fijo típico de blogs */
-  margin: 0 auto;     
-  padding: 2rem;      
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  /* La banda sigue a ancho completo; solo damos algo menos de aire */
+  .page-body .hero-title    { padding-top: 1rem; }
+  .page-body .hero-subtitle { padding-bottom: 1rem; }
+  .page-body .featured-cards { padding-top: .75rem; padding-bottom: .75rem; }
 }
