@@ -333,4 +333,35 @@ body {
 .post-content ul, .post-content ol {
   margin-left: 1.5rem;
 }
+.related-posts {
+  background: #e2dcd5;
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  border: 1px solid #d5cfc7;
+}
+
+.related-posts h3, 
+.related-posts h4 {
+  color: #2c2c2c;
+  margin-top: 0.5rem;
+}
+
+.related-posts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.related-posts li {
+  margin: 0.3rem 0;
+}
+
+.related-posts a {
+  color: #000;
+  text-decoration: none;
+}
+
+.related-posts a:hover {
+  text-decoration: underline;
+}
 
