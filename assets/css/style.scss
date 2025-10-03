@@ -499,4 +499,113 @@ hr {
   margin-top: 0;            /* ya unido visualmente */
   padding-top: .75rem;      /* un poco más compacto */
 }
+/* ===== Post: jerarquía visual y separadores elegantes ===== */
+.post-container{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 2rem 2.25rem;
+  max-width: 900px;
+  margin: 1.5rem auto 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+.post-header{ margin-bottom: 1rem; }
+.post-kicker{
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 700;
+  font-size: .8rem;
+  color: #7a6f63;
+  margin-bottom: .25rem;
+}
+
+.post-title{
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: 2.2rem;           /* grande, negro */
+  line-height: 1.2;
+  color: #141414;
+  margin: 0 0 .35rem;
+  text-align: left;
+}
+
+.post-dek{                      /* subtítulo/dek en gris */
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: #4e4e4e;
+  margin: 0 0 .6rem;
+}
+
+.post-meta{
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0;
+}
+.post-badge{
+  display: inline-block;
+  background: #efe6dd;
+  border: 1px solid #e3d9cf;
+  color: #5a4e42;
+  padding: .12rem .5rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  margin-left: .25rem;
+}
+
+.post-sep{
+  border: 0;
+  border-top: 1px solid #e6ddd5; /* línea sutil bajo cabecera */
+  margin: .9rem 0 0;
+}
+
+/* Contenido */
+.post-content{
+  font-size: 1.06rem;
+  line-height: 1.75;
+  color: #222;
+  margin-top: 1.25rem;
+}
+
+/* Secciones: separadores por título */
+.post-content h2{
+  font-size: 1.5rem;
+  margin: 2rem 0 .6rem;
+  color: #1b1b1b;
+  border-top: 1px solid #e6ddd5; /* línea arriba del H2 */
+  padding-top: .9rem;
+}
+.post-content h3{
+  font-size: 1.2rem;
+  margin: 1.5rem 0 .4rem;
+  color: #2b2b2b;
+}
+
+/* Parrafos y listas ligeramente más aireados */
+.post-content p{ margin: 0 0 1rem; }
+.post-content ul, .post-content ol{ margin: 0 0 1rem 1.5rem; }
+
+/* Citas y código dentro del post */
+.post-content blockquote{
+  margin: 1rem 0;
+  padding: .8rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: #f5eee8;
+  color: #333;
+  border-radius: 6px;
+}
+.post-content pre{
+  background: #f5f2ef;
+  border: 1px solid #e6ded7;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: auto;
+}
+
+/* Responsive: bajar tamaños un punto en móvil */
+@media (max-width: 900px){
+  .post-container{ padding: 1.25rem 1rem; }
+  .post-title{ font-size: 1.9rem; }
+  .post-dek{ font-size: 1.05rem; }
+}
 
