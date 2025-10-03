@@ -409,20 +409,56 @@ hr {
     order: 0;                           /* vuelve arriba en móvil */
   }
 }
-/* === Topbar: poner buscador en línea con el menú === */
+/* ==== Topbar compacta ==== */
+:root{
+  --topbar-h: 60px;        /* cambia a 56px o 48px si la quieres aún más baja */
+  --topbar-pad-x: 8px;     /* padding lateral interno */
+}
+
+.site-topbar{
+  height: var(--topbar-h);
+}
+.site-topbar .container{
+  height: var(--topbar-h);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Logo y marca compactos */
+.site-logo{ height: calc(var(--topbar-h) - 6px); }
+.brand-block{ padding-left: var(--topbar-pad-x); }
+.topbar-right{ padding-right: var(--topbar-pad-x); }
+
+/* Tipografía y espaciado compactos en la marca */
+.brand-title{ font-size: 1.4rem; }
+.tagline{ font-size: .8rem; opacity: .85; }
+@media (max-width: 1200px){
+  .tagline{ display: none; }  /* oculta tagline en pantallas medianas para ganar espacio */
+}
+
+/* Menú + buscador en la misma línea (compact) */
 .topbar-right{
-  display: flex;            /* <— misma fila */
-  align-items: center;      /* centrado vertical */
-  gap: 1rem;                /* espacio entre buscador y enlaces */
+  display:flex;
+  align-items:center;
+  gap:.8rem;
 }
+.search-form{ margin:0; }
+.search-input{
+  height: 32px;
+  padding: 0 .6rem;
+  font-size: .9rem;
+  border-radius: 8px;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  gap: .9rem;           /* separa un poco los links */
+}
+.nav a{ line-height: 1; }
 
-.search-form{               /* quitamos margen que lo empujaba */
-  margin: 0;
-}
-
-.nav{                        /* ya lo tienes en flex, reforzamos alineado */
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+/* Opcional: versión aún más compacta (descomenta)
+:root{ --topbar-h: 48px; }
+.brand-title{ font-size: 1.2rem; }
+.search-input{ height: 28px; font-size: .85rem; }
+*/
 
