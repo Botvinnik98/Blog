@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} · {{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
     {% seo %}
     <!-- CSS (cache-buster con build_revision) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
@@ -25,17 +25,22 @@
           </a>
         </div>
 
-        <!-- Derecha: Buscador + Menú -->
+        <!-- Derecha: Buscador + Menú (buscador va primero) -->
         <div class="topbar-right">
-          <form action="{{ '/' | relative_url }}" method="get" class="search-form">
-            <input type="text" name="q" placeholder="Search articles..." class="search-input">
+          <!-- Buscador -->
+          <form action="{{ '/' | relative_url }}" method="get" class="search-form" role="search" aria-label="Site search">
+            <input type="text" name="q" placeholder="Search articles..." class="search-input" aria-label="Search" />
           </form>
-          <nav class="nav">
+
+          <!-- Menú en el orden solicitado -->
+          <nav class="nav" aria-label="Primary">
             <a href="{{ '/' | relative_url }}">Home</a>
             <a href="{{ '/markets/' | relative_url }}">Markets</a>
             <a href="{{ '/stories/' | relative_url }}">Stories & Cases</a>
             <a href="{{ '/culture/' | relative_url }}">Misc</a>
-            <a href="{{ '/about/'   | relative_url }}">About</a>
+            <a href="{{ '/newsletter/' | relative_url }}">Newsletter</a>
+            <a href="{{ '/donate/' | relative_url }}">Donate</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
           </nav>
         </div>
       </div>
@@ -101,23 +106,37 @@
         const searchInput = document.querySelector(".search-input");
         const resultsBox = document.getElementById("search-results");
 
+        function hideResults() {
+          resultsBox.style.display = "none";
+          resultsBox.innerHTML = "";
+        }
+
+        document.addEventListener("click", (e) => {
+          if (!resultsBox.contains(e.target) && e.target !== searchInput) hideResults();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") hideResults();
+        });
+
         if (searchInput) {
           searchInput.addEventListener("input", function () {
-            const query = this.value;
+            const query = this.value.trim();
             resultsBox.innerHTML = "";
-            if (query.length < 2) {
-              resultsBox.style.display = "none";
-              return;
-            }
-            resultsBox.style.display = "block";
+            if (!idx || query.length < 2) { hideResults(); return; }
 
             const results = idx.search(query);
             if (results.length > 0) {
+              resultsBox.style.display = "block";
               results.forEach(r => {
                 const item = store.find(d => d.url === r.ref);
-                resultsBox.innerHTML += `<p><a href="${item.url}">${item.title}</a></p>`;
+                if (item) {
+                  const p = document.createElement("p");
+                  p.innerHTML = `<a href="${item.url}">${item.title}</a>`;
+                  resultsBox.appendChild(p);
+                }
               });
             } else {
+              resultsBox.style.display = "block";
               resultsBox.innerHTML = "<p>No results found</p>";
             }
           });
