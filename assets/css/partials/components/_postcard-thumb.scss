@@ -1,0 +1,28 @@
+/* ===== Tarjetas con miniatura lateral ===== */
+.post-card--with-thumb{
+  display: grid;
+  grid-template-columns: 180px 1fr; /* 180px de miniatura + texto */
+  gap: 1rem;
+  align-items: center;              /* centra verticalmente */
+}
+/* Variante: miniatura a la derecha */
+.post-card--with-thumb.post-card--right{
+  grid-template-columns: 1fr 180px; /* texto + miniatura */
+}
+.post-card--with-thumb.post-card--right .post-thumb{
+  order: 2;                         /* mueve la imagen a la derecha */
+}
+/* Miniatura cuadrada (cover) */
+.post-card--with-thumb .post-thumb{
+  width: 100%;
+  aspect-ratio: 1 / 1;              /* cuadrada */
+  object-fit: cover;                 /* recorta sin deformar */
+  object-position: center;
+  border-radius: 10px;
+  display: block;
+}
+/* Responsive: apila en móvil */
+@media (max-width: 720px){
+  .post-card--with-thumb{ grid-template-columns: 1fr; /* imagen arriba en móvil */ }
+  .post-card--with-thumb.post-card--right .post-thumb{ order: 0; /* vuelve arriba en móvil */ }
+}
