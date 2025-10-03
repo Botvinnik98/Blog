@@ -1,0 +1,33 @@
+/* =========================================================
+   BANDAS FULL-BLEED + HERO / FEATURED bands
+   ========================================================= */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+/* Contenido centrado dentro de las bandas */
+.full-bleed .inner {
+  max-width: var(--maxw-limit);
+  width: var(--maxw);
+  margin: 0 auto;
+  padding: 2rem;
+}
+/* Banda del HERO */
+.hero-band {
+  background: #f1ebe5;
+  border-bottom: 1px solid var(--card-border);
+}
+.hero-band .hero-title { margin-top: 0; }
+.hero-band .hero-subtitle { margin-bottom: 0; }
+/* Banda de FEATURED */
+.featured-band {
+  background: var(--band-bg);
+  border-top: 1px solid var(--card-border);
+  border-bottom: 0; /* sin borde para pegar con el panel de Latest */
+}
+.featured-band .featured-cards {
+  margin: 0;
+  padding-top: .5rem;
+  padding-bottom: 1rem;
+}
