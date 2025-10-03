@@ -409,4 +409,20 @@ hr {
     order: 0;                           /* vuelve arriba en móvil */
   }
 }
+/* === Topbar: poner buscador en línea con el menú === */
+.topbar-right{
+  display: flex;            /* <— misma fila */
+  align-items: center;      /* centrado vertical */
+  gap: 1rem;                /* espacio entre buscador y enlaces */
+}
+
+.search-form{               /* quitamos margen que lo empujaba */
+  margin: 0;
+}
+
+.nav{                        /* ya lo tienes en flex, reforzamos alineado */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
