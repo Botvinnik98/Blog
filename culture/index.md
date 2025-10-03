@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Misc"
-permalink: /culture/
+title: "Archive"
+permalink: /archive/
 ---
 
-<h1>Misc</h1>
+<h1>Archive</h1>
 
 <!-- Destacados de Misc -->
 <div class="featured-cards">
