@@ -3,11 +3,23 @@ layout: default
 ---
 
 <article class="post-container">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <p class="meta">
-    {{ page.date | date: "%B %d, %Y" }}
-    {% if page.categories %} · {{ page.categories | join: ", " }}{% endif %}
-  </p>
+  <header class="post-header">
+    {% if page.kicker %}<div class="post-kicker">{{ page.kicker }}</div>{% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="post-dek">{{ page.subtitle }}</p>{% endif %}
+
+    <p class="post-meta">
+      {{ page.date | date: "%B %d, %Y" }}
+      {% if page.categories and page.categories.size > 0 %}
+        ·
+        {% for c in page.categories %}
+          <span class="post-badge">{{ c }}</span>
+        {% endfor %}
+      {% endif %}
+    </p>
+
+    <hr class="post-sep">
+  </header>
 
   <div class="post-content">
     {{ content }}
