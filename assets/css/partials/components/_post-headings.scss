@@ -1,0 +1,64 @@
+/* ===== Reglas/separadores antes de cada H2/H3 ===== */
+.post-content h2, .post-content h3{
+  position: relative;
+  color:#1a1a1a;
+}
+.post-content h2::before, .post-content h3::before{
+  content:"";
+  display:block;
+  border-top: 1px solid var(--post-rule); /* ← línea visible */
+  margin-bottom: .85rem;
+  opacity:.95;
+}
+
+/* Espaciado armónico: que no se pegue nada a los títulos */
+.post-content h2{ margin: 2rem 0 .6rem; }
+.post-content h3{ margin: 1.5rem 0 .45rem; }
+
+/* Regla sutil entre grandes bloques (opcional, queda elegante) */
+.post-content .section-rule{
+  border:0;
+  height:1px;
+  background: linear-gradient(to right, transparent, var(--post-rule), transparent);
+  margin: 1.25rem 0;
+}
+
+/* Listas y párrafos con aire, manteniendo legibilidad */
+.post-content p{ margin: 0 0 1.05rem; }
+.post-content ul, .post-content ol{ margin: 0 0 1.05rem 1.5rem; }
+
+/* También línea en los h3 (como en los h2) */
+.post-content h3{
+  border-top: 1px solid #e6ddd5;
+  padding-top: .7rem;
+}
+
+/* --- Limpieza de líneas duplicadas en posts --- */
+
+/* 1) Quitar la línea bajo la cabecera del post */
+.post-sep{ display:none !important; }
+
+/* 2) Asegurar UNA sola línea antes de cada sección */
+.post-content h2::before, .post-content h3::before{ content:none !important; } /* por si quedó la versión con ::before */
+.post-content h2{
+  border-top: 1px solid #e6ddd5;
+  padding-top: .9rem;
+}
+.post-content h3{
+  border-top: 1px solid #e6ddd5;
+  padding-top: .7rem;
+}
+
+/* 3) Si pones un <hr> manual antes de un título, no dibujar otra línea */
+.post-content hr + h2, .post-content hr + h3{
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* 4) Separadores manuales más elegantes (opcional) */
+.post-content hr{
+  border:0;
+  height:1px;
+  background: linear-gradient(to right, transparent, #e6ddd5, transparent);
+  margin: 1.1rem 0;
+}
