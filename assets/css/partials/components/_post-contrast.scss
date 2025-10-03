@@ -1,0 +1,39 @@
+/* ====== CONTRASTE DEL ARTÍCULO + REGLAS DE SECCIÓN ====== */
+:root{
+  /* Colores más contrastados para el post */
+  --post-bg: #ddd1c6; /* un punto más oscuro que --card-bg */
+  --post-border: #cdbfb2; /* borde más marcado */
+  --post-rule: #b9a999; /* líneas divisorias dentro del post */
+}
+.post-container{
+  background: var(--post-bg);
+  border: 1px solid var(--post-border);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);  /* sombra un poco más potente */
+}
+
+/* Título negro, subtítulo gris (si usas .post-dek) */
+.post-title{ color:#111; }
+.post-dek{ color:#4a4a4a; }
+
+/* Meta un pelín más tenue para subir contraste del título */
+.post-meta{ color:#7a7168; }
+
+/* Citas y código ligeramente más contrastados contra el nuevo fondo */
+.post-content blockquote{
+  background:#efe6dc;
+  border-left-color:#a99684;
+}
+.post-content pre{
+  background:#f3ece5;
+  border-color:#d9cdc1;
+}
+
+/* Opcional: línea base al final del header (si quieres remarcarla más) */
+.post-sep{ border-top-color: var(--post-rule); }
+
+/* Contraste extra solo para el post (repetido en el original, mantenido) */
+.post-container{
+  background: #ddd1c6; /* un poco más oscuro que var(--card-bg) */
+  border-color: #cdbfb2; /* borde más marcado */
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
