@@ -1,0 +1,13 @@
+/* Reglas de figuras dentro del post (tal cual en tu archivo) */
+.post-content .post-figure{ margin: 1rem 0 1.25rem; }
+.post-content .post-figure img{
+  width:100%;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.post-content .post-figure figcaption{
+  font-size:.9rem;
+  color:#6b645c;
+  margin-top:.4rem;
+  text-align:center;
+}
