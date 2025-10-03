@@ -1,0 +1,81 @@
+/* ==== Topbar compacta ==== */
+:root{
+  --topbar-h: 60px;        /* cambia a 56px o 48px si la quieres aún más baja */
+  --topbar-pad-x: 8px;     /* padding lateral interno */
+}
+.site-topbar{ height: var(--topbar-h); }
+.site-topbar .container{ height: var(--topbar-h); padding-left: 0; padding-right: 0; }
+
+/* Logo y marca compactos */
+.site-logo{ height: calc(var(--topbar-h) - 6px); }
+.brand-block{ padding-left: var(--topbar-pad-x); }
+.topbar-right{ padding-right: var(--topbar-pad-x); }
+
+/* Tipografía y espaciado compactos en la marca */
+.brand-title{ font-size: 1.4rem; }
+.tagline{ font-size: .8rem; opacity: .85; }
+@media (max-width: 1200px){
+  .tagline{ display: none; }  /* oculta tagline en pantallas medianas para ganar espacio */
+}
+
+/* Menú + buscador en la misma línea (compact) */
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+}
+.search-form{ margin:0; }
+.search-input{
+  height: 32px;
+  padding: 0 .6rem;
+  font-size: .9rem;
+  border-radius: 8px;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  gap: .9rem;           /* separa un poco los links */
+}
+.nav a{ line-height: 1; }
+
+/* Opcional: versión aún más compacta (comentada en el original)
+:root{ --topbar-h: 48px; }
+.brand-title{ font-size: 1.2rem; }
+.search-input{ height: 28px; font-size: .85rem; }
+*/
+
+/* ========== Compactar ticker TradingView ========== */
+:root{ --ticker-h: 32px; /* ⇦ ajusta a 28/30/34 si quieres */ }
+.ticker-bar{ line-height: 0; }
+.ticker-bar .tradingview-widget-container,
+.ticker-bar .tradingview-widget-container__widget,
+.ticker-bar .tradingview-widget-container iframe{
+  height: var(--ticker-h) !important;
+}
+
+/* ========== Compactar HERO (título + subtítulo) ========== */
+.hero-band .inner{
+  padding-top: .75rem;   /* antes 2rem */
+  padding-bottom: .75rem;
+}
+.hero-title{
+  margin: 1rem auto .4rem;  /* antes 2rem / 1rem */
+  font-size: 2.8rem;        /* baja un poco la altura visual */
+}
+.hero-subtitle{
+  margin: 0 auto .75rem;    /* más cerca del título */
+}
+
+/* ========== Compactar FEATURED (banda y tarjetas) ========== */
+.featured-band .inner{
+  padding-top: .5rem;       /* antes 2rem (heredado) */
+  padding-bottom: .5rem;
+}
+.featured-band .featured-cards{ gap: .75rem; }
+.card{ padding: .85rem; }   /* un poco menos de padding */
+
+/* ========== Afinar separación entre FEATURED y Latest ========== */
+.narrow-panel{
+  margin-top: 0;            /* ya unido visualmente */
+  padding-top: .75rem;      /* un poco más compacto */
+}
