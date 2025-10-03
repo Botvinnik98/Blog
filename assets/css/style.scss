@@ -453,4 +453,54 @@ hr {
    AJUSTES FINOS
    ========================================================= */
 /* Compactar hero/featured ya integrado arriba; nada duplicado */
+/* ===== HOTFIX: band widths + TradingView ticker ===== */
+
+/* 1) Bandas más estrechas (hero + featured) */
+:root{
+  --band-inner-max: 1050px;   /* ajusta 980–1100 a gusto */
+}
+
+/* fuerza ancho del contenido de las bandas */
+.hero-band .inner,
+.featured-band .inner{
+  max-width: var(--band-inner-max) !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* grids más compactos en featured */
+.featured-band .featured-cards{
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: .85rem;
+}
+
+/* 2) Ticker TradingView: altura y superposición */
+.ticker-bar{
+  position: relative;
+  z-index: 5;               /* por encima de bordes/sombras */
+  overflow: visible;        /* evita “recortes” */
+  padding: 0; 
+  line-height: 0; 
+  height: var(--ticker-h);  /* caja del contenedor = altura del widget */
+}
+
+.ticker-bar .tradingview-widget-container,
+.ticker-bar .tradingview-widget-container__widget,
+.ticker-bar .tradingview-widget-container iframe{
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: var(--ticker-h) !important;  /* sin mismatch de alturas */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+/* si ves aún “corte” visual, baja un pelo la altura */
+@media (min-width: 801px){
+  :root{ --ticker-h: 30px; }   /* prueba 30–34 según tu widget */
+}
+
 
